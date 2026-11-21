@@ -1,64 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eno Mansa Restaurant | Authentic Ghanaian Cuisine in Kumasi</title>
-  <meta name="description" content="Eno Mansa Restaurant at Osei Tutu I Ave, Kumasi. Enjoy freshly prepared Ghanaian classics including Banku & Tilapia, Fufu, Jollof Rice, and Waakye. Open Mon–Sat, 9:00 AM – 5:30 PM." />
+  <meta name="description" content="Freshly prepared Ghanaian dishes on Osei Tutu I Ave, Kumasi. Open Monday to Saturday, 9:00 AM – 5:30 PM. Order online via WhatsApp or call 053 907 2039." />
   <style>
-    /* ==========================================================================
-       1. DESIGN TOKENS & BASE RESET (Offline-First System Typography & Palette)
-       ========================================================================== */
     :root {
-      --color-terracotta: #B84A27;
-      --color-terracotta-dark: #93381B;
-      --color-terracotta-soft: #F9EAE4;
-      --color-amber: #D98A2B;
-      --color-amber-light: #F6E6CE;
-      --color-forest: #1E4632;
-      --color-forest-dark: #143123;
-      --color-forest-soft: #E6EFEA;
-      --color-cream: #FDF9F3;
-      --color-surface: #FFFFFF;
-      --color-charcoal: #1F2421;
-      --color-muted: #5A625E;
-      --color-border: #E8DFD3;
-      --shadow-sm: 0 2px 8px rgba(31, 36, 33, 0.06);
-      --shadow-md: 0 8px 24px rgba(31, 36, 33, 0.09);
-      --shadow-lg: 0 16px 40px rgba(31, 36, 33, 0.14);
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 22px;
-      --radius-pill: 999px;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-      --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
-      --transition: all 0.22s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --bg-cream: #fbf7f0;
+      --bg-card: #ffffff;
+      --bg-warm: #f3eadc;
+      --forest: #1b4332;
+      --forest-dark: #122e22;
+      --terracotta: #b84a27;
+      --terracotta-dark: #94391c;
+      --amber: #d9822b;
+      --whatsapp: #25d366;
+      --whatsapp-dark: #1da851;
+      --text-main: #22201d;
+      --text-muted: #5c564e;
+      --border: #e3d7c5;
+      --shadow: 0 10px 28px rgba(27, 67, 50, 0.08);
+      --radius: 14px;
     }
 
-    *, *::before, *::after {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
     html {
-      font-size: 16px;
       scroll-behavior: smooth;
-      overflow-x: hidden;
     }
 
     body {
-      font-family: var(--font-sans);
-      background-color: var(--color-cream);
-      color: var(--color-charcoal);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-main);
       line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    img, svg {
-      display: block;
-      max-width: 100%;
     }
 
     a {
@@ -66,56 +46,58 @@
       text-decoration: none;
     }
 
-    button, input, select, textarea {
-      font-family: inherit;
-      font-size: inherit;
+    /* Top Status Bar */
+    .status-bar {
+      background-color: var(--forest-dark);
+      color: #f6f1e7;
+      font-size: 0.85rem;
+      padding: 0.55rem 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem 1.5rem;
+      text-align: center;
     }
 
-    /* ==========================================================================
-       2. GHANAIAN KENTE-INSPIRED GEOMETRIC ACCENT STRIP (Pure CSS)
-       ========================================================================== */
-    .kente-strip {
-      height: 8px;
-      width: 100%;
-      background: repeating-linear-gradient(
-        90deg,
-        #D98A2B 0px,
-        #D98A2B 24px,
-        #B84A27 24px,
-        #B84A27 48px,
-        #1E4632 48px,
-        #1E4632 72px,
-        #1F2421 72px,
-        #1F2421 84px,
-        #F6E6CE 84px,
-        #F6E6CE 96px
-      );
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
     }
 
-    .container {
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #4ade80;
     }
 
-    /* ==========================================================================
-       3. STICKY NAVIGATION & LIVE GHANA TIME STATUS BADGE
-       ========================================================================== */
-    .site-header {
+    .dot.closed {
+      background-color: #f87171;
+    }
+
+    /* Navigation */
+    header {
       position: sticky;
       top: 0;
       z-index: 900;
-      background: rgba(253, 249, 243, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--color-border);
+      background: rgba(251, 247, 240, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
     }
 
-    .nav-wrapper {
+    .nav-wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0.9rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 72px;
       gap: 1rem;
     }
 
@@ -128,646 +110,385 @@
     .brand-mark {
       width: 42px;
       height: 42px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--color-terracotta), var(--color-amber));
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--terracotta), var(--amber));
       color: #fff;
-      box-shadow: var(--shadow-sm);
-      flex-shrink: 0;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-name {
-      font-family: var(--font-serif);
-      font-weight: 700;
+      font-weight: 800;
       font-size: 1.15rem;
-      color: var(--color-forest);
+      display: grid;
+      place-items: center;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-text h1 {
+      font-size: 1.15rem;
+      color: var(--forest);
       line-height: 1.15;
     }
 
-    .brand-sub {
-      font-size: 0.75rem;
-      color: var(--color-muted);
-      font-weight: 500;
+    .brand-text span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.94rem;
+      gap: 1.4rem;
       font-weight: 600;
-      color: var(--color-charcoal);
-      padding: 0.4rem 0.2rem;
-      position: relative;
-      transition: var(--transition);
+      font-size: 0.95rem;
+      color: var(--forest);
     }
 
     .nav-links a:hover {
-      color: var(--color-terracotta);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.38rem 0.8rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.78rem;
-      font-weight: 700;
-      border: 1px solid transparent;
-      white-space: nowrap;
-    }
-
-    .status-pill.is-open {
-      background-color: var(--color-forest-soft);
-      color: var(--color-forest);
-      border-color: rgba(30, 70, 50, 0.22);
-    }
-
-    .status-pill.is-closed {
-      background-color: var(--color-terracotta-soft);
-      color: var(--color-terracotta-dark);
-      border-color: rgba(184, 74, 39, 0.22);
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: currentColor;
+      color: var(--terracotta);
     }
 
     .tray-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background-color: var(--color-forest);
+      background-color: var(--forest);
       color: #fff;
       border: none;
-      border-radius: var(--radius-pill);
-      padding: 0.58rem 1rem;
+      border-radius: 999px;
+      padding: 0.58rem 1.1rem;
       font-weight: 600;
       font-size: 0.9rem;
       cursor: pointer;
-      transition: var(--transition);
-      box-shadow: var(--shadow-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s ease, transform 0.15s ease;
     }
 
     .tray-trigger:hover {
-      background-color: var(--color-forest-dark);
+      background-color: var(--forest-dark);
       transform: translateY(-1px);
     }
 
     .tray-count {
-      background-color: var(--color-amber);
-      color: var(--color-charcoal);
+      background-color: var(--amber);
+      color: #1b1815;
       font-weight: 800;
       font-size: 0.78rem;
-      min-width: 22px;
-      height: 22px;
-      padding: 0 6px;
-      border-radius: var(--radius-pill);
-      display: inline-flex;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #1b4332 0%, #265640 55%, #8c381d 100%);
+      color: #fff;
+      padding: 4.2rem 1.25rem;
+    }
+
+    .hero-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr;
+      gap: 2.2rem;
       align-items: center;
-      justify-content: center;
     }
 
-    .mobile-menu-btn {
-      display: none;
-      background: transparent;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm);
-      padding: 0.5rem;
-      color: var(--color-charcoal);
-      cursor: pointer;
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      letter-spacing: 0.4px;
     }
 
-    /* ==========================================================================
-       4. BUTTONS & SHARED BADGES
-       ========================================================================== */
+    .hero h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: #efe9de;
+      font-size: 1.05rem;
+      max-width: 58ch;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.55rem;
-      padding: 0.85rem 1.45rem;
-      border-radius: var(--radius-md);
+      gap: 0.5rem;
+      padding: 0.82rem 1.4rem;
+      border-radius: 10px;
       font-weight: 700;
       font-size: 0.96rem;
-      border: 2px solid transparent;
       cursor: pointer;
-      transition: var(--transition);
-      text-align: center;
+      border: none;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
     .btn-primary {
-      background-color: var(--color-terracotta);
-      color: #fff;
-      box-shadow: 0 6px 18px rgba(184, 74, 39, 0.26);
+      background-color: var(--amber);
+      color: #1c1814;
     }
 
     .btn-primary:hover {
-      background-color: var(--color-terracotta-dark);
-      transform: translateY(-2px);
+      background-color: #e69138;
     }
 
     .btn-secondary {
-      background-color: var(--color-surface);
-      color: var(--color-forest);
-      border-color: var(--color-forest);
+      background-color: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
     }
 
     .btn-secondary:hover {
-      background-color: var(--color-forest);
-      color: #fff;
-      transform: translateY(-2px);
+      background-color: rgba(255, 255, 255, 0.22);
     }
 
-    .btn-amber {
-      background-color: var(--color-amber);
-      color: var(--color-charcoal);
+    .hero-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      backdrop-filter: blur(6px);
     }
 
-    .btn-amber:hover {
-      background-color: #c57a1f;
-      color: #fff;
+    .hero-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      color: #ffd89b;
     }
 
-    .section-pad {
-      padding: 4.5rem 0;
-    }
-
-    .section-eyebrow {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-terracotta);
-      background-color: var(--color-terracotta-soft);
-      padding: 0.35rem 0.85rem;
-      border-radius: var(--radius-pill);
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: clamp(1.85rem, 3.2vw, 2.55rem);
-      color: var(--color-forest);
-      line-height: 1.2;
-      margin-bottom: 0.85rem;
-    }
-
-    .section-lead {
-      color: var(--color-muted);
-      font-size: 1.05rem;
-      max-width: 640px;
-    }
-
-    /* ==========================================================================
-       5. HERO SECTION
-       ========================================================================== */
-    .hero {
-      padding: 3.5rem 0 4.5rem;
-      background:
-        radial-gradient(circle at 90% 15%, rgba(217, 138, 43, 0.14), transparent 45%),
-        radial-gradient(circle at 10% 85%, rgba(184, 74, 39, 0.10), transparent 45%),
-        var(--color-cream);
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 2.75rem;
-      align-items: center;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background-color: var(--color-amber-light);
-      color: #7A480D;
-      padding: 0.42rem 0.95rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.84rem;
-      font-weight: 700;
-      margin-bottom: 1.15rem;
-    }
-
-    .hero-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.2rem, 4.3vw, 3.35rem);
-      line-height: 1.13;
-      color: var(--color-charcoal);
-      margin-bottom: 1.15rem;
-    }
-
-    .hero-title span {
-      color: var(--color-terracotta);
-    }
-
-    .hero-desc {
-      font-size: 1.08rem;
-      color: var(--color-muted);
-      margin-bottom: 1.75rem;
-      max-width: 580px;
-    }
-
-    .hero-cta-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      margin-bottom: 2rem;
-    }
-
-    .hero-pills {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.85rem;
-    }
-
-    .info-pill-card {
-      background-color: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: 0.85rem 0.95rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .info-pill-label {
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--color-muted);
-      font-weight: 700;
-      margin-bottom: 0.2rem;
-    }
-
-    .info-pill-value {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--color-forest);
-    }
-
-    /* Hero Decorative Showcase Card */
-    .hero-visual {
-      background: linear-gradient(155deg, var(--color-forest) 0%, #122B1E 100%);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      color: #fff;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-visual::after {
-      content: "";
-      position: absolute;
-      inset: 10px;
-      border: 1px dashed rgba(217, 138, 43, 0.38);
-      border-radius: calc(var(--radius-lg) - 6px);
-      pointer-events: none;
-    }
-
-    .hero-plate-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 1.35rem;
-    }
-
-    .hero-card-title {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      text-align: center;
-      color: #FDF9F3;
-      margin-bottom: 0.4rem;
-    }
-
-    .hero-card-sub {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #D7E3DC;
-      margin-bottom: 1.35rem;
-    }
-
-    .hero-specials-list {
+    .info-list {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
+      display: grid;
+      gap: 0.85rem;
+      font-size: 0.95rem;
     }
 
-    .hero-specials-list li {
+    .info-list li {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.08);
-      padding: 0.65rem 0.9rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      padding-bottom: 0.65rem;
     }
 
-    .hero-specials-list strong {
-      color: var(--color-amber);
-      font-weight: 800;
+    .info-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
     }
 
-    /* ==========================================================================
-       6. MENU & INTERACTIVE FILTERING
-       ========================================================================== */
-    .menu-header-bar {
+    /* Sections */
+    section {
+      padding: 4rem 1.25rem;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 2.3rem;
+    }
+
+    .section-head span {
+      color: var(--terracotta);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.65rem, 3vw, 2.25rem);
+      color: var(--forest);
+      margin: 0.35rem 0 0.6rem;
+    }
+
+    .section-head p {
+      color: var(--text-muted);
+    }
+
+    /* Filter Tabs */
+    .filter-bar {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1.25rem;
+      justify-content: center;
+      gap: 0.6rem;
       margin-bottom: 2rem;
-    }
-
-    .filter-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
     }
 
     .filter-btn {
-      background-color: var(--color-surface);
-      color: var(--color-charcoal);
-      border: 1px solid var(--color-border);
-      padding: 0.6rem 1.1rem;
-      border-radius: var(--radius-pill);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
       font-weight: 600;
       font-size: 0.9rem;
       cursor: pointer;
-      transition: var(--transition);
+      transition: all 0.2s ease;
     }
 
+    .filter-btn.active,
     .filter-btn:hover {
-      border-color: var(--color-terracotta);
-      color: var(--color-terracotta);
-    }
-
-    .filter-btn.active {
-      background-color: var(--color-terracotta);
+      background: var(--forest);
       color: #fff;
-      border-color: var(--color-terracotta);
-      box-shadow: 0 4px 12px rgba(184, 74, 39, 0.25);
+      border-color: var(--forest);
     }
 
+    /* Menu Grid */
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.4rem;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.35rem;
     }
 
     .dish-card {
-      background-color: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       padding: 1.35rem;
+      box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-    }
-
-    .dish-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-color: rgba(184, 74, 39, 0.35);
+      gap: 1rem;
     }
 
     .dish-top {
       display: flex;
-      align-items: flex-start;
       justify-content: space-between;
-      gap: 0.85rem;
-      margin-bottom: 0.9rem;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.45rem;
     }
 
-    .dish-icon-box {
-      width: 54px;
-      height: 54px;
-      border-radius: 14px;
-      background-color: var(--color-cream);
-      border: 1px solid var(--color-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .dish-tag {
+    .dish-cat {
+      display: inline-block;
       font-size: 0.74rem;
       font-weight: 700;
-      padding: 0.28rem 0.65rem;
-      border-radius: var(--radius-pill);
-      background-color: var(--color-forest-soft);
-      color: var(--color-forest);
-    }
-
-    .dish-tag.spicy {
-      background-color: var(--color-terracotta-soft);
-      color: var(--color-terracotta-dark);
-    }
-
-    .dish-tag.refreshing {
-      background-color: var(--color-amber-light);
-      color: #7A480D;
-    }
-
-    .dish-title {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      color: var(--color-charcoal);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--terracotta);
+      background: #fdf0eb;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
       margin-bottom: 0.45rem;
-      line-height: 1.3;
     }
 
-    .dish-desc {
-      font-size: 0.9rem;
-      color: var(--color-muted);
-      margin-bottom: 1.25rem;
-    }
-
-    .dish-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 0.95rem;
-      border-top: 1px solid var(--color-border);
-      gap: 0.75rem;
+    .dish-card h3 {
+      font-size: 1.12rem;
+      color: var(--forest);
     }
 
     .dish-price {
-      font-size: 1.2rem;
       font-weight: 800;
-      color: var(--color-forest);
+      font-size: 1.08rem;
+      color: var(--terracotta);
+      white-space: nowrap;
     }
 
-    .dish-price small {
-      font-size: 0.76rem;
-      font-weight: 500;
-      color: var(--color-muted);
-      display: block;
+    .dish-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
     }
 
-    .add-tray-btn {
-      background-color: var(--color-cream);
-      color: var(--color-terracotta-dark);
-      border: 1.5px solid var(--color-terracotta);
-      border-radius: var(--radius-sm);
-      padding: 0.55rem 0.9rem;
+    .add-btn {
+      width: 100%;
+      background: var(--bg-warm);
+      color: var(--forest);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 0.68rem 1rem;
       font-weight: 700;
-      font-size: 0.86rem;
+      font-size: 0.92rem;
       cursor: pointer;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
+      transition: background 0.2s ease, color 0.2s ease;
     }
 
-    .add-tray-btn:hover {
-      background-color: var(--color-terracotta);
+    .add-btn:hover {
+      background: var(--terracotta);
       color: #fff;
+      border-color: var(--terracotta);
     }
 
-    /* ==========================================================================
-       7. ABOUT & CUSTOMER HIGHLIGHTS
-       ========================================================================== */
-    .about-section {
-      background-color: var(--color-surface);
-      border-top: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
+    /* Highlights Band */
+    .highlights {
+      background: var(--bg-warm);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
-    .about-grid {
+    .highlights-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
     }
 
-    .about-pillars {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1.75rem;
-    }
-
-    .pillar-card {
-      background-color: var(--color-cream);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: 1.15rem;
-    }
-
-    .pillar-card h3 {
-      font-size: 1rem;
-      color: var(--color-forest);
-      margin-bottom: 0.3rem;
-    }
-
-    .pillar-card p {
-      font-size: 0.87rem;
-      color: var(--color-muted);
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.35rem;
-      margin-top: 2.25rem;
-    }
-
-    .review-card {
-      background-color: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
+    .highlight-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       padding: 1.4rem;
-      box-shadow: var(--shadow-sm);
     }
 
-    .review-stars {
-      color: var(--color-amber);
-      font-size: 1rem;
-      letter-spacing: 2px;
-      margin-bottom: 0.65rem;
+    .highlight-box h3 {
+      color: var(--forest);
+      font-size: 1.08rem;
+      margin-bottom: 0.45rem;
     }
 
-    .review-quote {
-      font-size: 0.94rem;
-      color: var(--color-charcoal);
-      margin-bottom: 1rem;
-      font-style: italic;
+    .highlight-box p {
+      color: var(--text-muted);
+      font-size: 0.93rem;
     }
 
-    .review-author {
-      font-size: 0.84rem;
-      font-weight: 700;
-      color: var(--color-forest);
-    }
-
-    .review-role {
-      font-size: 0.78rem;
-      color: var(--color-muted);
-    }
-
-    /* ==========================================================================
-       8. LOCATION, HOURS & QUICK INQUIRY SECTION
-       ========================================================================== */
-    .visit-grid {
+    /* Location & Hours */
+    .location-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2.25rem;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 1.8rem;
+      align-items: stretch;
     }
 
-    .visit-card {
-      background-color: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .visit-card h3 {
-      font-family: var(--font-serif);
-      font-size: 1.35rem;
-      color: var(--color-forest);
-      margin-bottom: 1rem;
+    .location-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.65rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.25rem;
     }
 
     .hours-table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 1.5rem;
+      font-size: 0.94rem;
     }
 
     .hours-table td {
-      padding: 0.65rem 0.4rem;
-      border-bottom: 1px solid var(--color-border);
-      font-size: 0.94rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
     }
 
     .hours-table tr:last-child td {
@@ -776,167 +497,85 @@
 
     .hours-table td:last-child {
       text-align: right;
-      font-weight: 700;
-    }
-
-    .hours-closed {
-      color: var(--color-terracotta);
-    }
-
-    .address-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-      margin: 1rem 0 1.35rem;
-    }
-
-    .map-frame-wrap {
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid var(--color-border);
-      background-color: var(--color-cream);
-      position: relative;
-      min-height: 240px;
-    }
-
-    .map-frame-wrap iframe {
-      width: 100%;
-      height: 250px;
-      border: 0;
-      display: block;
-    }
-
-    .map-offline-note {
-      padding: 0.65rem 0.9rem;
-      font-size: 0.8rem;
-      color: var(--color-muted);
-      background-color: var(--color-cream);
-      border-top: 1px solid var(--color-border);
-    }
-
-    /* Forms */
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.86rem;
-      font-weight: 700;
-      color: var(--color-charcoal);
-      margin-bottom: 0.35rem;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 0.72rem 0.9rem;
-      border: 1.5px solid var(--color-border);
-      border-radius: var(--radius-sm);
-      background-color: var(--color-cream);
-      color: var(--color-charcoal);
-      transition: var(--transition);
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: var(--color-forest);
-      background-color: #fff;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
-    }
-
-    .form-feedback {
-      display: none;
-      margin-top: 1rem;
-      padding: 0.95rem;
-      border-radius: var(--radius-sm);
-      background-color: var(--color-forest-soft);
-      color: var(--color-forest);
-      border: 1px solid rgba(30, 70, 50, 0.25);
-      font-size: 0.9rem;
       font-weight: 600;
+      color: var(--forest);
     }
 
-    /* ==========================================================================
-       9. SLIDE-OUT ORDER TRAY DRAWER & TOAST NOTIFICATION
-       ========================================================================== */
+    .closed-day {
+      color: var(--terracotta) !important;
+    }
+
+    .map-frame {
+      width: 100%;
+      min-height: 360px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Slide-out Order Tray */
     .drawer-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(20, 30, 24, 0.52);
+      background: rgba(18, 24, 20, 0.52);
       z-index: 1000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
+      display: none;
     }
 
     .drawer-backdrop.open {
-      opacity: 1;
-      pointer-events: auto;
+      display: block;
     }
 
     .order-drawer {
       position: fixed;
       top: 0;
-      right: 0;
+      right: -430px;
       width: 100%;
-      max-width: 440px;
+      max-width: 410px;
       height: 100vh;
-      background-color: var(--color-surface);
-      z-index: 1010;
-      box-shadow: -12px 0 36px rgba(0, 0, 0, 0.18);
-      transform: translateX(100%);
-      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+      background: var(--bg-card);
+      z-index: 1001;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.18);
       display: flex;
       flex-direction: column;
+      transition: right 0.28s ease;
     }
 
     .order-drawer.open {
-      transform: translateX(0);
+      right: 0;
     }
 
     .drawer-header {
-      padding: 1.25rem 1.4rem;
-      background-color: var(--color-forest);
+      padding: 1.15rem 1.3rem;
+      background: var(--forest);
       color: #fff;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
 
-    .drawer-header h2 {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-    }
-
-    .close-drawer-btn {
-      background: rgba(255, 255, 255, 0.15);
+    .close-drawer {
+      background: transparent;
       border: none;
       color: #fff;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      line-height: 1;
     }
 
     .drawer-body {
       flex: 1;
       overflow-y: auto;
-      padding: 1.25rem 1.4rem;
+      padding: 1.2rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
     }
 
-    .tray-empty {
+    .empty-tray {
       text-align: center;
+      color: var(--text-muted);
       padding: 2.5rem 1rem;
-      color: var(--color-muted);
     }
 
     .tray-item {
@@ -944,1104 +583,630 @@
       justify-content: space-between;
       align-items: center;
       gap: 0.75rem;
-      padding: 0.85rem 0;
-      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
     }
 
-    .tray-item-info h4 {
-      font-size: 0.95rem;
-      color: var(--color-charcoal);
-      margin-bottom: 0.15rem;
+    .tray-item h4 {
+      font-size: 0.96rem;
+      color: var(--forest);
     }
 
-    .tray-item-info span {
-      font-size: 0.84rem;
-      color: var(--color-muted);
-      font-weight: 600;
+    .tray-item small {
+      color: var(--text-muted);
     }
 
     .qty-controls {
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      background-color: var(--color-cream);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-pill);
-      padding: 0.25rem 0.45rem;
     }
 
     .qty-btn {
       width: 28px;
       height: 28px;
-      border-radius: 50%;
-      border: none;
-      background-color: var(--color-surface);
-      color: var(--color-charcoal);
-      font-weight: 800;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg-warm);
+      font-weight: 700;
       cursor: pointer;
-      box-shadow: var(--shadow-sm);
     }
 
-    .qty-btn:hover {
-      background-color: var(--color-terracotta);
-      color: #fff;
+    .order-details-form {
+      background: var(--bg-cream);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem;
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 0.4rem;
+    }
+
+    .order-details-form label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--forest);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .order-details-form input,
+    .order-details-form select {
+      width: 100%;
+      padding: 0.52rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      font-size: 0.88rem;
+      font-family: inherit;
+      background: #fff;
     }
 
     .drawer-footer {
-      padding: 1.25rem 1.4rem;
-      border-top: 1px solid var(--color-border);
-      background-color: var(--color-cream);
-    }
-
-    .subtotal-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1.12rem;
-      font-weight: 800;
-      color: var(--color-forest);
-      margin-bottom: 0.9rem;
-    }
-
-    .summary-preview-box {
-      display: none;
-      margin-top: 0.85rem;
-      background-color: #fff;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm);
-      padding: 0.75rem;
-      font-size: 0.82rem;
-      white-space: pre-wrap;
-      color: var(--color-charcoal);
-      max-height: 130px;
-      overflow-y: auto;
-    }
-
-    .toast {
-      position: fixed;
-      bottom: 22px;
-      left: 50%;
-      transform: translateX(-50%) translateY(90px);
-      background-color: var(--color-charcoal);
-      color: #fff;
-      padding: 0.75rem 1.3rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.9rem;
-      font-weight: 600;
-      box-shadow: var(--shadow-lg);
-      z-index: 1200;
-      opacity: 0;
-      transition: all 0.28s ease;
-      pointer-events: none;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* ==========================================================================
-       10. FOOTER
-       ========================================================================== */
-    .site-footer {
-      background-color: var(--color-forest-dark);
-      color: #E3ECE7;
-      padding: 3.5rem 0 2rem;
-    }
-
-    .footer-grid {
+      padding: 1.1rem 1.3rem;
+      border-top: 1px solid var(--border);
+      background: var(--bg-cream);
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 2rem;
-      padding-bottom: 2.25rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      gap: 0.6rem;
     }
 
-    .footer-brand {
-      font-family: var(--font-serif);
-      font-size: 1.45rem;
-      color: #fff;
-      margin-bottom: 0.65rem;
-    }
-
-    .footer-col h4 {
-      color: var(--color-amber);
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.85rem;
-    }
-
-    .footer-links {
-      list-style: none;
+    .total-row {
       display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      font-size: 0.92rem;
-    }
-
-    .footer-links a:hover {
-      color: var(--color-amber);
-    }
-
-    .footer-bottom {
-      padding-top: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.84rem;
-      color: #AFC0B7;
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--forest);
+      margin-bottom: 0.2rem;
     }
 
-    /* ==========================================================================
-       11. RESPONSIVE BREAKPOINTS (Mobile & Tablet)
-       ========================================================================== */
-    @media (max-width: 960px) {
-      .hero-grid,
-      .about-grid,
-      .visit-grid {
+    .btn-whatsapp {
+      background-color: var(--whatsapp);
+      color: #0b2b16;
+      width: 100%;
+      font-weight: 800;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: var(--whatsapp-dark);
+      color: #fff;
+    }
+
+    .btn-copy {
+      background: var(--bg-card);
+      color: var(--forest);
+      border: 1px solid var(--border);
+      width: 100%;
+      padding: 0.65rem 1rem;
+      font-size: 0.88rem;
+    }
+
+    .btn-copy:hover {
+      background: var(--bg-warm);
+    }
+
+    .feedback-note {
+      font-size: 0.82rem;
+      color: var(--forest);
+      text-align: center;
+      min-height: 1.1rem;
+      font-weight: 600;
+    }
+
+    footer {
+      background: var(--forest-dark);
+      color: #d8d1c5;
+      text-align: center;
+      padding: 2rem 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero-inner,
+      .location-grid {
         grid-template-columns: 1fr;
       }
 
-      .menu-grid,
-      .testimonials-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 740px) {
       .nav-links {
         display: none;
-        position: absolute;
-        top: 72px;
-        left: 0;
-        right: 0;
-        background-color: var(--color-cream);
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem 1.25rem 1.4rem;
-        border-bottom: 1px solid var(--color-border);
-        box-shadow: var(--shadow-md);
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .mobile-menu-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .status-pill .status-time-extra {
-        display: none;
-      }
-
-      .hero-pills,
-      .menu-grid,
-      .testimonials-grid,
-      .about-pillars,
-      .form-row,
-      .footer-grid {
-        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Kente-Inspired Top Border -->
-  <div class="kente-strip" aria-hidden="true"></div>
 
-  <!-- Sticky Navigation Bar -->
-  <header class="site-header">
-    <div class="container nav-wrapper">
-      <a href="#home" class="brand" aria-label="Eno Mansa Restaurant Home">
-        <div class="brand-mark" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 13h18a9 9 0 0 1-18 0Z"/>
-            <path d="M7 9c0-2 1.5-3 1.5-5"/>
-            <path d="M12 8c0-2 1.5-3 1.5-5"/>
-            <path d="M17 9c0-2 1.5-3 1.5-5"/>
-          </svg>
-        </div>
+  <!-- Live Ghana Time Status Bar -->
+  <div class="status-bar">
+    <span class="live-badge">
+      <span class="dot" id="statusDot"></span>
+      <span id="statusText">Checking Kumasi hours...</span>
+    </span>
+    <span>Osei Tutu I Ave, Kumasi</span>
+    <span><a href="tel:+233539072039">Call: 053 907 2039</a></span>
+  </div>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-wrap">
+      <a href="#" class="brand">
+        <div class="brand-mark">EM</div>
         <div class="brand-text">
-          <span class="brand-name">Eno Mansa Restaurant</span>
-          <span class="brand-sub">Osei Tutu I Ave, Kumasi</span>
+          <h1>Eno Mansa Restaurant</h1>
+          <span>Osei Tutu I Ave • Kumasi</span>
         </div>
       </a>
 
-      <nav aria-label="Primary Navigation">
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#location">Hours &amp; Location</a></li>
-        </ul>
+      <nav class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#why-us">About</a>
+        <a href="#location">Location & Hours</a>
       </nav>
 
-      <div class="nav-actions">
-        <div id="liveStatusPill" class="status-pill is-open" title="Calculated using Ghana Time (GMT)">
-          <span class="status-dot"></span>
-          <span id="liveStatusText">Checking hours...</span>
-        </div>
-
-        <button type="button" class="tray-trigger" id="openTrayBtn" aria-label="Open Order Tray">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <path d="M16 10a4 4 0 0 1-8 0"/>
-          </svg>
-          <span>Order Tray</span>
-          <span class="tray-count" id="trayCountBadge">0</span>
-        </button>
-
-        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu" aria-expanded="false">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <line x1="3" y1="12" x2="21" y2="12"/>
-            <line x1="3" y1="18" x2="21" y2="18"/>
-          </svg>
-        </button>
-      </div>
+      <button class="tray-trigger" id="openTrayBtn" type="button">
+        Order Tray <span class="tray-count" id="trayCount">0</span>
+      </button>
     </div>
   </header>
 
-  <main>
-    <!-- =====================================================================
-         HERO SECTION
-         ===================================================================== -->
-    <section id="home" class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="hero-badge">
-            <span>&#9733;</span> Authentic Ashanti &amp; Ghanaian Home Cooking
-          </div>
-          <h1 class="hero-title">
-            Hearty, Freshly Cooked <span>Ghanaian Meals</span> in the Heart of Kumasi.
-          </h1>
-          <p class="hero-desc">
-            Located right along <strong>Osei Tutu I Avenue</strong>, Eno Mansa Restaurant serves piping-hot local classics, rich traditional soups, smoky Jollof, and chilled sobolo for busy workers, shoppers, and families every Monday through Saturday.
-          </p>
-
-          <div class="hero-cta-group">
-            <a href="#menu" class="btn btn-primary">
-              Explore Today's Menu
-            </a>
-            <a href="tel:+233539072039" class="btn btn-secondary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-              Call to Order (053 907 2039)
-            </a>
-          </div>
-
-          <div class="hero-pills">
-            <div class="info-pill-card">
-              <div class="info-pill-label">Location</div>
-              <div class="info-pill-value">Osei Tutu I Ave, Kumasi</div>
-            </div>
-            <div class="info-pill-card">
-              <div class="info-pill-label">Opening Hours</div>
-              <div class="info-pill-value">Mon–Sat: 9:00 AM – 5:30 PM</div>
-            </div>
-            <div class="info-pill-card">
-              <div class="info-pill-label">Service Options</div>
-              <div class="info-pill-value">Dine-In &amp; Fast Pickup</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Decorative Ghanaian Calabash & Daily Kitchen Highlights Card -->
-        <aside class="hero-visual" aria-label="Kitchen Highlights">
-          <div class="hero-plate-wrap">
-            <svg width="128" height="128" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Traditional Ghanaian Calabash Bowl Illustration">
-              <circle cx="70" cy="70" r="64" fill="rgba(217,138,43,0.14)" stroke="#D98A2B" stroke-width="2" stroke-dasharray="6 4"/>
-              <!-- Steam lines -->
-              <path d="M52 38C52 31 58 29 58 22" stroke="#F6E6CE" stroke-width="3" stroke-linecap="round"/>
-              <path d="M70 34C70 27 76 25 76 18" stroke="#D98A2B" stroke-width="3" stroke-linecap="round"/>
-              <path d="M88 38C88 31 94 29 94 22" stroke="#F6E6CE" stroke-width="3" stroke-linecap="round"/>
-              <!-- Food mound -->
-              <ellipse cx="70" cy="64" rx="34" ry="15" fill="#E89B3C"/>
-              <circle cx="62" cy="60" r="7" fill="#B84A27"/>
-              <circle cx="78" cy="61" r="6" fill="#3B7A57"/>
-              <!-- Earthenware / Calabash Bowl -->
-              <path d="M28 64H112C112 91 93 108 70 108C47 108 28 91 28 64Z" fill="#B84A27" stroke="#FDF9F3" stroke-width="2.5"/>
-              <path d="M35 76H105" stroke="#D98A2B" stroke-width="3" stroke-dasharray="8 6"/>
-              <ellipse cx="70" cy="111" rx="22" ry="4" fill="#D98A2B"/>
-            </svg>
-          </div>
-          <h2 class="hero-card-title">Fresh Off the Fire Today</h2>
-          <p class="hero-card-sub">Prepared every morning from local Kumasi market produce</p>
-          <ul class="hero-specials-list">
-            <li>
-              <span>Banku &amp; Grilled Tilapia</span>
-              <strong>&#8373;65</strong>
-            </li>
-            <li>
-              <span>Fufu &amp; Goat Light Soup</span>
-              <strong>&#8373;60</strong>
-            </li>
-            <li>
-              <span>Smoky Party Jollof &amp; Chicken</span>
-              <strong>&#8373;50</strong>
-            </li>
-            <li>
-              <span>Waakye Special Full Pack</span>
-              <strong>&#8373;45</strong>
-            </li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         INTERACTIVE MENU & ORDER TRAY ESTIMATOR
-         ===================================================================== -->
-    <section id="menu" class="section-pad">
-      <div class="container">
-        <div class="menu-header-bar">
-          <div>
-            <span class="section-eyebrow">Our Daily Menu</span>
-            <h2 class="section-title">Authentic Ghanaian Classics</h2>
-            <p class="section-lead">
-              Filter by category and add dishes to your <strong>Order Tray</strong> to calculate your total in Ghana Cedis (&#8373;) before calling or walking in.
-            </p>
-          </div>
-
-          <div class="filter-tabs" role="tablist" aria-label="Menu Categories">
-            <button type="button" class="filter-btn active" data-category="all">All Dishes</button>
-            <button type="button" class="filter-btn" data-category="local">Local Favorites</button>
-            <button type="button" class="filter-btn" data-category="rice">Rice Dishes</button>
-            <button type="button" class="filter-btn" data-category="soups">Soups &amp; Sides</button>
-            <button type="button" class="filter-btn" data-category="drinks">Drinks</button>
-          </div>
-        </div>
-
-        <div class="menu-grid" id="menuGrid">
-          <!-- Menu cards rendered dynamically by JavaScript -->
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         ABOUT & CUSTOMER HIGHLIGHTS
-         ===================================================================== -->
-    <section id="about" class="section-pad about-section">
-      <div class="container">
-        <div class="about-grid">
-          <div>
-            <span class="section-eyebrow">Our Story &amp; Kitchen</span>
-            <h2 class="section-title">Warm Ashanti Hospitality on Osei Tutu I Avenue</h2>
-            <p class="section-lead" style="margin-bottom: 1rem;">
-              At <strong>Eno Mansa Restaurant</strong>, every pot is seasoned with care and time-honored Ghanaian recipes. Whether you are stepping out on a busy afternoon lunch break in central Kumasi or picking up a hearty meal for the family, we believe real food should taste just like home.
-            </p>
-            <p style="color: var(--color-muted); font-size: 0.98rem;">
-              From freshly pounded fufu and charcoal-grilled Volta tilapia to rich kontomire stew and spiced sobolo, we source fresh tomatoes, garden eggs, yam, plantain, and spices daily so every plate arrives hot, generous, and deeply satisfying.
-            </p>
-
-            <div class="about-pillars">
-              <div class="pillar-card">
-                <h3>Fresh Morning Prep</h3>
-                <p>Soups, stews, and waakye are cooked fresh each morning for peak daytime flavor.</p>
-              </div>
-              <div class="pillar-card">
-                <h3>Generous Portions</h3>
-                <p>Honest, filling servings paired with tender proteins and homemade shito.</p>
-              </div>
-              <div class="pillar-card">
-                <h3>Central Kumasi Access</h3>
-                <p>Conveniently situated on Osei Tutu I Ave for quick dine-in or takeaway.</p>
-              </div>
-              <div class="pillar-card">
-                <h3>Hygienic &amp; Welcoming</h3>
-                <p>Clean dining area, friendly service, and careful takeaway packaging.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Customer Testimonials -->
-          <div>
-            <span class="section-eyebrow">Diner Highlights</span>
-            <h2 class="section-title">What Kumasi Diners Love</h2>
-            <div class="testimonials-grid" style="grid-template-columns: 1fr; margin-top: 1.25rem;">
-              <article class="review-card">
-                <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="review-quote">
-                  "Their Fufu with Goat Light Soup is unmatched around Osei Tutu I Avenue. The soup is rich, aromatic, and served piping hot right at lunchtime."
-                </p>
-                <div class="review-author">Kwame Mensah</div>
-                <div class="review-role">Regular Lunch Diner &bull; Kumasi</div>
-              </article>
-
-              <article class="review-card">
-                <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="review-quote">
-                  "I always call ahead on 053 907 2039 for Banku and Tilapia with extra green pepper and shito. Ready on time and packed neatly."
-                </p>
-                <div class="review-author">Abena Boateng</div>
-                <div class="review-role">Shop Owner &bull; Central Business District</div>
-              </article>
-
-              <article class="review-card">
-                <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="review-quote">
-                  "Clean space, friendly staff, and the chilled ginger-pineapple sobolo pairs wonderfully with their smoky Jollof rice."
-                </p>
-                <div class="review-author">Kofi Osei-Bonsu</div>
-                <div class="review-role">Visitor &bull; Ashanti Region</div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         LOCATION, OPENING HOURS & RESERVATION / CATERING INQUIRY
-         ===================================================================== -->
-    <section id="location" class="section-pad">
-      <div class="container">
-        <span class="section-eyebrow">Visit or Reach Us</span>
-        <h2 class="section-title">Opening Hours &amp; Kumasi Location</h2>
-        <p class="section-lead">
-          Drop in for breakfast-to-afternoon dining along Osei Tutu I Ave, or send a quick pickup/table request below.
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-tag">Authentic Ghanaian Daytime Dining</span>
+        <h2>Hearty Homemade Ghanaian Meals in the Heart of Kumasi</h2>
+        <p>
+          Visit Eno Mansa Restaurant along Osei Tutu I Avenue for freshly pounded fufu, smoky jollof, banku with grilled tilapia, and rich traditional soups served hot every Monday through Saturday.
         </p>
-
-        <div class="visit-grid">
-          <!-- Hours & Map Card -->
-          <div class="visit-card">
-            <h3>Weekly Opening Hours</h3>
-            <table class="hours-table" aria-label="Weekly Opening Hours">
-              <tbody>
-                <tr><td>Monday</td><td>9:00 AM – 5:30 PM</td></tr>
-                <tr><td>Tuesday</td><td>9:00 AM – 5:30 PM</td></tr>
-                <tr><td>Wednesday</td><td>9:00 AM – 5:30 PM</td></tr>
-                <tr><td>Thursday</td><td>9:00 AM – 5:30 PM</td></tr>
-                <tr><td>Friday</td><td>9:00 AM – 5:30 PM</td></tr>
-                <tr><td>Saturday</td><td>9:00 AM – 5:30 PM</td></tr>
-                <tr><td>Sunday</td><td class="hours-closed">Closed</td></tr>
-              </tbody>
-            </table>
-
-            <h3>Address &amp; Direct Line</h3>
-            <p style="font-size: 0.96rem; color: var(--color-charcoal); font-weight: 600;">
-              Eno Mansa Restaurant, Osei Tutu I Ave, Kumasi, Ghana
-            </p>
-            <p style="font-size: 0.92rem; color: var(--color-muted); margin-top: 0.25rem;">
-              Phone / Order Line: <a href="tel:+233539072039" style="color: var(--color-terracotta); font-weight: 700;">053 907 2039</a>
-            </p>
-
-            <div class="address-actions">
-              <button type="button" class="btn btn-secondary" id="copyAddressBtn" style="padding: 0.6rem 1rem; font-size: 0.86rem;">
-                Copy Address
-              </button>
-              <a href="https://www.google.com/maps/search/?api=1&query=Eno+Mansa+Restaurant+Osei+Tutu+I+Ave+Kumasi" target="_blank" rel="noopener noreferrer" class="btn btn-amber" style="padding: 0.6rem 1rem; font-size: 0.86rem;">
-                Open in Google Maps
-              </a>
-            </div>
-
-            <div class="map-frame-wrap">
-              <iframe
-                title="Google Map showing Eno Mansa Restaurant on Osei Tutu I Ave, Kumasi"
-                src="https://maps.google.com/maps?q=Osei%20Tutu%20I%20Ave,%20Kumasi&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
-              <div class="map-offline-note">
-                Map preview requires an active internet connection. Landmark: <strong>Osei Tutu I Ave, Kumasi</strong>.
-              </div>
-            </div>
-          </div>
-
-          <!-- Pickup / Table Reservation Inquiry Form -->
-          <div class="visit-card">
-            <h3>Table Reservation &amp; Pickup Inquiry</h3>
-            <p style="font-size: 0.92rem; color: var(--color-muted); margin-bottom: 1.25rem;">
-              Planning a group lunch, office takeaway order, or afternoon table? Fill out the quick form below or call <strong>053 907 2039</strong> directly.
-            </p>
-
-            <form id="inquiryForm">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="guestName">Your Full Name *</label>
-                  <input type="text" id="guestName" class="form-control" placeholder="e.g., Akosua Mensah" required />
-                </div>
-                <div class="form-group">
-                  <label for="guestPhone">Phone Number *</label>
-                  <input type="tel" id="guestPhone" class="form-control" placeholder="e.g., 024 000 0000" required />
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="inquiryType">Request Type</label>
-                  <select id="inquiryType" class="form-control">
-                    <option value="Takeaway / Pickup Order">Takeaway / Pickup Order</option>
-                    <option value="Dine-In Table Reservation">Dine-In Table Reservation</option>
-                    <option value="Office / Event Bulk Order">Office / Event Bulk Order</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="preferredTime">Preferred Time (Mon–Sat, 9:00 AM – 5:30 PM)</label>
-                  <input type="time" id="preferredTime" class="form-control" value="12:30" min="09:00" max="17:30" required />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="guestNotes">Meals or Special Requests</label>
-                <textarea id="guestNotes" rows="4" class="form-control" placeholder="Tell us your preferred dishes, spice level, or party size..."></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-primary" style="width: 100%;">
-                Prepare Inquiry Summary
-              </button>
-            </form>
-
-            <div id="inquiryFeedback" class="form-feedback" role="status"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- =====================================================================
-       FOOTER
-       ===================================================================== -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-brand">Eno Mansa Restaurant</div>
-          <p style="font-size: 0.92rem; color: #C5D3CC; max-width: 360px; margin-bottom: 1.1rem;">
-            Serving authentic, freshly prepared Ghanaian dishes in the heart of Kumasi. Warm hospitality and rich local flavors every Monday through Saturday.
-          </p>
-          <a href="tel:+233539072039" class="btn btn-amber" style="padding: 0.65rem 1.15rem; font-size: 0.9rem;">
-            Call 053 907 2039
-          </a>
-        </div>
-
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#menu">Today's Menu</a></li>
-            <li><a href="#about">About Our Kitchen</a></li>
-            <li><a href="#location">Opening Hours &amp; Map</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Visit Us</h4>
-          <ul class="footer-links">
-            <li>Osei Tutu I Ave, Kumasi, Ghana</li>
-            <li>Mon – Sat: 9:00 AM – 5:30 PM</li>
-            <li>Sunday: Closed</li>
-            <li><a href="tel:+233539072039">Tel: 053 907 2039</a></li>
-          </ul>
+        <div class="hero-actions">
+          <a href="#menu" class="btn btn-primary">Explore Today's Menu</a>
+          <a href="tel:+233539072039" class="btn btn-secondary">Call 053 907 2039</a>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <span>&copy; <span id="currentYear"></span> Eno Mansa Restaurant, Kumasi. All rights reserved.</span>
-        <span>Osei Tutu I Ave &bull; Authentic Ghanaian Cuisine</span>
+      <div class="hero-card">
+        <h3>Quick Visit & Order Info</h3>
+        <ul class="info-list">
+          <li><span>Address</span><strong>Osei Tutu I Ave, Kumasi</strong></li>
+          <li><span>Mon – Sat</span><strong>9:00 AM – 5:30 PM</strong></li>
+          <li><span>Sunday</span><strong>Closed</strong></li>
+          <li><span>Phone / WhatsApp</span><strong>053 907 2039</strong></li>
+        </ul>
       </div>
     </div>
-    <div class="kente-strip" style="margin-top: 1.75rem;" aria-hidden="true"></div>
+  </section>
+
+  <!-- Interactive Menu Section -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-head">
+        <span>Fresh Daily Kitchen</span>
+        <h2>Our Signature Menu</h2>
+        <p>Select your favorite dishes to build an order tray, then send your order straight to our WhatsApp line in one tap.</p>
+      </div>
+
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-category="all" type="button">All Dishes</button>
+        <button class="filter-btn" data-category="local" type="button">Local Staples & Soups</button>
+        <button class="filter-btn" data-category="rice" type="button">Rice Specialties</button>
+        <button class="filter-btn" data-category="drinks" type="button">Traditional Drinks</button>
+      </div>
+
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+  </section>
+
+  <!-- About / Highlights -->
+  <section class="highlights" id="why-us">
+    <div class="container">
+      <div class="section-head">
+        <span>Why Dine With Us</span>
+        <h2>Prepared Fresh Every Morning</h2>
+        <p>Conveniently located along Osei Tutu I Avenue for quick lunch breaks, takeaway packs, and sit-down meals.</p>
+      </div>
+
+      <div class="highlights-grid">
+        <div class="highlight-box">
+          <h3>Authentic Ashanti Recipes</h3>
+          <p>Slow-simmered light soup, palm nut soup, and groundnut soup seasoned with traditional spices and fresh local ingredients.</p>
+        </div>
+        <div class="highlight-box">
+          <h3>Central Kumasi Access</h3>
+          <p>Easy to reach on Osei Tutu I Avenue for workers, shoppers, and visitors looking for a satisfying daytime meal.</p>
+        </div>
+        <div class="highlight-box">
+          <h3>Fast WhatsApp Pre-Orders</h3>
+          <p>Build your meal tray online and send your order directly to 053 907 2039 so your food is ready when you arrive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Opening Hours -->
+  <section id="location">
+    <div class="container">
+      <div class="section-head">
+        <span>Find Us</span>
+        <h2>Location & Opening Hours</h2>
+        <p>Stop by for dine-in or takeaway during our daytime service hours.</p>
+      </div>
+
+      <div class="location-grid">
+        <div class="location-card">
+          <div>
+            <h3 style="color: var(--forest); margin-bottom: 0.4rem;">Eno Mansa Restaurant</h3>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Osei Tutu I Ave, Kumasi, Ghana</p>
+
+            <table class="hours-table">
+              <tr><td>Monday</td><td>9:00 AM – 5:30 PM</td></tr>
+              <tr><td>Tuesday</td><td>9:00 AM – 5:30 PM</td></tr>
+              <tr><td>Wednesday</td><td>9:00 AM – 5:30 PM</td></tr>
+              <tr><td>Thursday</td><td>9:00 AM – 5:30 PM</td></tr>
+              <tr><td>Friday</td><td>9:00 AM – 5:30 PM</td></tr>
+              <tr><td>Saturday</td><td>9:00 AM – 5:30 PM</td></tr>
+              <tr><td>Sunday</td><td class="closed-day">Closed</td></tr>
+            </table>
+          </div>
+
+          <div style="display: grid; gap: 0.65rem;">
+            <a href="tel:+233539072039" class="btn btn-primary">Call Now: 053 907 2039</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Eno+Mansa+Restaurant+Osei+Tutu+I+Ave+Kumasi" target="_blank" rel="noopener" class="btn btn-copy">Open in Google Maps</a>
+          </div>
+        </div>
+
+        <iframe
+          class="map-frame"
+          title="Eno Mansa Restaurant Location on Osei Tutu I Ave, Kumasi"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Osei+Tutu+I+Ave,+Kumasi,+Ghana&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Eno Mansa Restaurant</strong> • Osei Tutu I Ave, Kumasi • Tel: 053 907 2039</p>
+    <p style="font-size: 0.82rem; margin-top: 0.35rem; opacity: 0.8;">Open Monday – Saturday, 9:00 AM – 5:30 PM</p>
   </footer>
 
-  <!-- =====================================================================
-       SLIDE-OUT ORDER TRAY DRAWER
-       ===================================================================== -->
+  <!-- Slide-out Order Tray -->
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="order-drawer" id="orderDrawer" aria-label="Order Tray Estimator" aria-hidden="true">
+  <aside class="order-drawer" id="orderDrawer" aria-label="Order Tray">
     <div class="drawer-header">
-      <h2>Your Order Tray</h2>
-      <button type="button" class="close-drawer-btn" id="closeTrayBtn" aria-label="Close Order Tray">&times;</button>
+      <h3>Your Order Tray</h3>
+      <button class="close-drawer" id="closeTrayBtn" type="button" aria-label="Close Order Tray">&times;</button>
     </div>
 
-    <div class="drawer-body" id="trayBody">
-      <!-- Dynamically populated tray items -->
-    </div>
+    <div class="drawer-body" id="trayBody"></div>
 
     <div class="drawer-footer">
-      <div class="form-row" style="margin-bottom: 0.75rem;">
-        <div>
-          <label for="orderMode" style="font-size: 0.78rem; font-weight: 700; display: block; margin-bottom: 0.25rem;">Order Type</label>
-          <select id="orderMode" class="form-control" style="padding: 0.5rem 0.65rem; font-size: 0.88rem;">
-            <option value="Pickup / Takeaway">Pickup / Takeaway</option>
-            <option value="Dine-In">Dine-In at Restaurant</option>
-          </select>
-        </div>
-        <div>
-          <label for="trayCustomerName" style="font-size: 0.78rem; font-weight: 700; display: block; margin-bottom: 0.25rem;">Your Name</label>
-          <input type="text" id="trayCustomerName" class="form-control" placeholder="Optional" style="padding: 0.5rem 0.65rem; font-size: 0.88rem;" />
-        </div>
+      <div class="total-row">
+        <span>Estimated Total</span>
+        <span id="trayTotal">₵0.00</span>
       </div>
-
-      <div class="subtotal-row">
-        <span>Estimated Subtotal</span>
-        <span id="traySubtotal">&#8373;0.00</span>
-      </div>
-
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem;">
-        <button type="button" class="btn btn-secondary" id="copyOrderBtn" style="padding: 0.7rem 0.8rem; font-size: 0.86rem;">
-          Copy Order Text
-        </button>
-        <a href="tel:+233539072039" class="btn btn-primary" style="padding: 0.7rem 0.8rem; font-size: 0.86rem;">
-          Call 053 907 2039
-        </a>
-      </div>
-
-      <pre id="orderSummaryPreview" class="summary-preview-box"></pre>
+      <button class="btn btn-whatsapp" id="sendWhatsappBtn" type="button">
+        Send Order via WhatsApp
+      </button>
+      <button class="btn btn-copy" id="copyOrderBtn" type="button">
+        Copy Order Summary
+      </button>
+      <div class="feedback-note" id="feedbackNote"></div>
     </div>
   </aside>
 
-  <!-- Toast Message Box (Replaces browser alert) -->
-  <div id="toastBox" class="toast" role="status" aria-live="polite"></div>
-
-  <!-- =====================================================================
-       INLINE JAVASCRIPT (Menu Rendering, Live Ghana Hours, Order Tray, Forms)
-       ===================================================================== -->
   <script>
-    (function () {
-      "use strict";
+    const RESTAURANT_WHATSAPP = "233539072039";
 
-      /* -----------------------------------------------------------------------
-         1. MENU DATA (Authentic Ghanaian Dishes with GHS Pricing & Custom SVGs)
-         ----------------------------------------------------------------------- */
-      const MENU_ITEMS = [
-        {
-          id: "banku-tilapia",
-          name: "Banku & Grilled Tilapia",
-          category: "local",
-          price: 65,
-          badge: "House Favorite",
-          badgeType: "spicy",
-          description: "Two balls of soft fermented corn-and-cassava banku served with whole charcoal-grilled Volta tilapia, fresh ground pepper, sliced onions, and rich black shito.",
-          icon: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B84A27" stroke-width="2"><path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6Z"/><circle cx="15" cy="11" r="1" fill="#B84A27"/><path d="M7 9v6M11 8v8"/></svg>`
-        },
-        {
-          id: "fufu-goat",
-          name: "Fufu with Goat Light Soup",
-          category: "soups",
-          price: 60,
-          badge: "Freshly Pounded",
-          badgeType: "default",
-          description: "Smooth, freshly pounded cassava and plantain fufu submerged in spicy, aromatic goat light soup simmered with garden eggs, tomatoes, and traditional herbs.",
-          icon: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1E4632" stroke-width="2"><path d="M3 12h18a9 9 0 0 1-18 0Z"/><circle cx="12" cy="10" r="3" fill="#D98A2B" stroke="none"/></svg>`
-        },
-        {
-          id: "fufu-groundnut",
-          name: "Fufu with Chicken Groundnut Soup",
-          category: "soups",
-          price: 55,
-          badge: "Rich & Creamy",
-          badgeType: "default",
-          description: "Velvety roasted peanut soup slow-cooked with seasoned local chicken pieces, served alongside freshly pounded fufu.",
-          icon: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B84A27" stroke-width="2"><path d="M3 12h18a9 9 0 0 1-18 0Z"/><path d="M8 7c1-2 3-2 4 0s3 2 4 0"/></svg>`
-        },
-        {
-          id: "jollof-chicken",
-          name: "Smoky Party Jollof & Grilled Chicken",
-          category: "rice",
-          price: 50,
-          badge: "Best Seller",
-          badgeType: "spicy",
-          description: "Fragrant long-grain Ghanaian Jollof cooked in a rich spiced tomato reduction, served with marinated grilled chicken thigh, coleslaw, and shito.",
-          icon: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D98A2B" stroke-width="2"><path d="M4 13h16a8 8 0 0 1-16 0Z"/><path d="M6 13c2-4 10-4 12 0"/></svg>`
-        },
-        {
-          id: "waakye-special",
-          name: "Waakye Special Full Pack",
-          category: "rice",
-          price: 45,
-          badge: "Morning Classic",
-          badgeType: "default",
-          description: "Traditional sorghum-leaf rice and black-eyed beans loaded with gari foto, talia (spaghetti), boiled egg, sweet fried plantain, wele, and grilled fish or beef.",
-          icon: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1E4632" stroke-width="2"><ellipse cx="12" cy="14" rx="9" ry="5"/><path d="M7 11c2-3 8-3 10 0"/></svg>`
-        },
-        {
-          id: "red-red",
-          name: "Red-Red (Beans Stew & Plantain)",
-          category: "local",
-          price: 35,
-          badge: "Plant-Based Option",
-          badgeType: "default",
-          description: "Slow-simmered black-eyed beans in palm oil and tomato stew topped with toasted gari and golden fried ripe plantains (kelewele-style or classic slices).",
-          icon: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B84A27" stroke-width="2"><path d="M5 16c3-7 11-7 14 0"/><circle cx="9" cy="11" r="2"/><circle cx="15" cy="11" r="2"/></svg>`
-        },
-        {
-          id: "ampesi-kontomire",
-          name: "Ampesi & Kontomire Stew",
-          category: "soups",
-          price: 40,
-          badge: "Wholesome",
-          badgeType: "default",
-          description: "Boiled white Pona yam and ripe plantain served with hearty cocoyam leaf (kontomire) stew cooked with egusi, smoked salmon, and boiled egg.",
-          icon: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1E4632" stroke-width="2"><path d="M12 3C7 3 4 7 4 12c0 4 3 8 8 9 5-1 8-5 8-9 0-5-3-9-8-9Z"/><path d="M12 7v10"/></svg>`
-        },
-        {
-          id: "sobolo-drink",
-          name: "Chilled Hibiscus Sobolo",
-          category: "drinks",
-          price: 12,
-          badge: "Ice Cold",
-          badgeType: "refreshing",
-          description: "Refreshing brewed hibiscus flower drink infused with fresh pineapple, crushed ginger, cloves, and Negro pepper.",
-          icon: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B84A27" stroke-width="2"><path d="M7 6h10l-1.2 14H8.2L7 6Z"/><path d="M12 6V2l3-1"/></svg>`
-        },
-        {
-          id: "asana-drink",
-          name: "Fresh Tamarind / Asana Drink",
-          category: "drinks",
-          price: 12,
-          badge: "Traditional Drink",
-          badgeType: "refreshing",
-          description: "Smooth, lightly sweetened fermented maize drink (Asana) chilled and served as the ideal companion to spicy Ghanaian meals.",
-          icon: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D98A2B" stroke-width="2"><path d="M8 5h8l-1 15H9L8 5Z"/><path d="M6 9h12"/></svg>`
-        }
+    const menuItems = [
+      {
+        id: "fufu-goat",
+        name: "Fufu with Goat Light Soup",
+        category: "local",
+        categoryLabel: "Local Staples & Soups",
+        price: 55,
+        desc: "Freshly pounded fufu served with spicy, aromatic goat meat light soup."
+      },
+      {
+        id: "fufu-groundnut",
+        name: "Fufu with Chicken Groundnut Soup",
+        category: "local",
+        categoryLabel: "Local Staples & Soups",
+        price: 50,
+        desc: "Creamy roasted peanut soup simmered with tender chicken and soft fufu."
+      },
+      {
+        id: "banku-tilapia",
+        name: "Banku & Grilled Tilapia",
+        category: "local",
+        categoryLabel: "Local Staples & Soups",
+        price: 65,
+        desc: "Charcoal-grilled whole tilapia served with hot banku, fresh pepper sauce, and shito."
+      },
+      {
+        id: "ampesi-kontomire",
+        name: "Boiled Yam & Kontomire Stew",
+        category: "local",
+        categoryLabel: "Local Staples & Soups",
+        price: 42,
+        desc: "Soft white yam paired with rich cocoyam leaf stew, boiled egg, and avocado."
+      },
+      {
+        id: "party-jollof",
+        name: "Smoky Jollof Rice & Grilled Chicken",
+        category: "rice",
+        categoryLabel: "Rice Specialties",
+        price: 48,
+        desc: "Flavorful Ghanaian jollof served with spiced grilled chicken, coleslaw, and shito."
+      },
+      {
+        id: "waakye-special",
+        name: "Waakye Special Pack",
+        category: "rice",
+        categoryLabel: "Rice Specialties",
+        price: 45,
+        desc: "Traditional rice and beans with gari, spaghetti, fried plantain, egg, and stew."
+      },
+      {
+        id: "red-red",
+        name: "Red-Red & Fried Ripe Plantain",
+        category: "local",
+        categoryLabel: "Local Staples & Soups",
+        price: 38,
+        desc: "Slow-cooked black-eyed bean stew in red palm oil with sweet golden plantains."
+      },
+      {
+        id: "sobolo",
+        name: "Chilled Spiced Sobolo",
+        category: "drinks",
+        categoryLabel: "Traditional Drinks",
+        price: 12,
+        desc: "Refreshing hibiscus flower drink infused with ginger, cloves, and pineapple."
+      },
+      {
+        id: "asana",
+        name: "Chilled Asana (Fermented Corn Drink)",
+        category: "drinks",
+        categoryLabel: "Traditional Drinks",
+        price: 12,
+        desc: "Classic caramelized roasted-corn refreshment served ice cold."
+      }
+    ];
+
+    let tray = {};
+    let currentCategory = "all";
+    let customerDetails = {
+      name: "",
+      type: "Takeaway / Pickup",
+      note: ""
+    };
+
+    const menuGrid = document.getElementById("menuGrid");
+    const filterBar = document.getElementById("filterBar");
+    const trayCount = document.getElementById("trayCount");
+    const trayBody = document.getElementById("trayBody");
+    const trayTotal = document.getElementById("trayTotal");
+    const orderDrawer = document.getElementById("orderDrawer");
+    const drawerBackdrop = document.getElementById("drawerBackdrop");
+    const feedbackNote = document.getElementById("feedbackNote");
+
+    // Live Ghana (GMT) Open/Closed Status
+    function updateKumasiStatus() {
+      const now = new Date();
+      const utcDay = now.getUTCDay(); // 0 = Sun, 1 = Mon ... 6 = Sat
+      const utcMinutes = now.getUTCHours() * 60 + now.getUTCMinutes();
+      const openMinutes = 9 * 60;       // 9:00 AM
+      const closeMinutes = 17 * 60 + 30; // 5:30 PM
+
+      const dot = document.getElementById("statusDot");
+      const text = document.getElementById("statusText");
+
+      const isOpen = utcDay >= 1 && utcDay <= 6 && utcMinutes >= openMinutes && utcMinutes < closeMinutes;
+
+      if (isOpen) {
+        dot.classList.remove("closed");
+        text.textContent = "Open Now in Kumasi (Closes 5:30 PM)";
+      } else {
+        dot.classList.add("closed");
+        text.textContent = utcDay === 0
+          ? "Closed Today (Opens Mon 9:00 AM)"
+          : "Closed Now (Open Mon–Sat, 9:00 AM – 5:30 PM)";
+      }
+    }
+
+    function renderMenu() {
+      const filtered = currentCategory === "all"
+        ? menuItems
+        : menuItems.filter(item => item.category === currentCategory);
+
+      menuGrid.innerHTML = filtered.map(item => `
+        <article class="dish-card">
+          <div>
+            <span class="dish-cat">${item.categoryLabel}</span>
+            <div class="dish-top">
+              <h3>${item.name}</h3>
+              <span class="dish-price">₵${item.price.toFixed(2)}</span>
+            </div>
+            <p class="dish-desc">${item.desc}</p>
+          </div>
+          <button class="add-btn" type="button" onclick="addToTray('${item.id}')">
+            + Add to Order Tray
+          </button>
+        </article>
+      `).join("");
+    }
+
+    function addToTray(id) {
+      tray[id] = (tray[id] || 0) + 1;
+      updateTrayUI();
+      openDrawer();
+    }
+
+    function changeQty(id, delta) {
+      if (!tray[id]) return;
+      tray[id] += delta;
+      if (tray[id] <= 0) {
+        delete tray[id];
+      }
+      updateTrayUI();
+    }
+
+    function saveCustomerInputs() {
+      const nameInput = document.getElementById("custName");
+      const typeInput = document.getElementById("orderType");
+      const noteInput = document.getElementById("orderNote");
+      if (nameInput) customerDetails.name = nameInput.value;
+      if (typeInput) customerDetails.type = typeInput.value;
+      if (noteInput) customerDetails.note = noteInput.value;
+    }
+
+    function updateTrayUI() {
+      const entries = Object.entries(tray);
+      let totalQty = 0;
+      let totalCost = 0;
+
+      if (entries.length === 0) {
+        trayBody.innerHTML = `
+          <div class="empty-tray">
+            <p><strong>Your order tray is empty.</strong></p>
+            <p style="margin-top: 0.4rem; font-size: 0.9rem;">Add dishes from the menu to prepare a WhatsApp order for Eno Mansa Restaurant.</p>
+          </div>
+        `;
+        trayCount.textContent = "0";
+        trayTotal.textContent = "₵0.00";
+        return;
+      }
+
+      const itemsHTML = entries.map(([id, qty]) => {
+        const item = menuItems.find(m => m.id === id);
+        const subtotal = item.price * qty;
+        totalQty += qty;
+        totalCost += subtotal;
+
+        return `
+          <div class="tray-item">
+            <div>
+              <h4>${item.name}</h4>
+              <small>₵${item.price.toFixed(2)} each • Subtotal: ₵${subtotal.toFixed(2)}</small>
+            </div>
+            <div class="qty-controls">
+              <button class="qty-btn" type="button" onclick="changeQty('${id}', -1)" aria-label="Decrease quantity">-</button>
+              <strong>${qty}</strong>
+              <button class="qty-btn" type="button" onclick="changeQty('${id}', 1)" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      const formHTML = `
+        <div class="order-details-form">
+          <div>
+            <label for="custName">Your Name (Optional)</label>
+            <input id="custName" type="text" placeholder="e.g., Kwame Mensah" value="${customerDetails.name.replace(/"/g, '&quot;')}" oninput="saveCustomerInputs()" />
+          </div>
+          <div>
+            <label for="orderType">Order Preference</label>
+            <select id="orderType" onchange="saveCustomerInputs()">
+              <option value="Takeaway / Pickup" ${customerDetails.type === "Takeaway / Pickup" ? "selected" : ""}>Takeaway / Pickup</option>
+              <option value="Dine-In" ${customerDetails.type === "Dine-In" ? "selected" : ""}>Dine-In at Restaurant</option>
+              <option value="Delivery Inquiry" ${customerDetails.type === "Delivery Inquiry" ? "selected" : ""}>Delivery Inquiry (Kumasi)</option>
+            </select>
+          </div>
+          <div>
+            <label for="orderNote">Extra Notes (Optional)</label>
+            <input id="orderNote" type="text" placeholder="e.g., Extra shito, less pepper" value="${customerDetails.note.replace(/"/g, '&quot;')}" oninput="saveCustomerInputs()" />
+          </div>
+        </div>
+      `;
+
+      trayBody.innerHTML = itemsHTML + formHTML;
+      trayCount.textContent = String(totalQty);
+      trayTotal.textContent = `₵${totalCost.toFixed(2)}`;
+    }
+
+    function buildOrderMessage() {
+      saveCustomerInputs();
+      const entries = Object.entries(tray);
+      if (entries.length === 0) return null;
+
+      let totalCost = 0;
+      const lines = [
+        "Hello Eno Mansa Restaurant! I would like to place an order:",
+        ""
       ];
 
-      /* -----------------------------------------------------------------------
-         2. STATE & DOM REFERENCES
-         ----------------------------------------------------------------------- */
-      let activeCategory = "all";
-      const orderTray = new Map(); // itemId -> quantity
-
-      const menuGrid = document.getElementById("menuGrid");
-      const filterBtns = document.querySelectorAll(".filter-btn");
-      const trayCountBadge = document.getElementById("trayCountBadge");
-      const trayBody = document.getElementById("trayBody");
-      const traySubtotal = document.getElementById("traySubtotal");
-      const orderDrawer = document.getElementById("orderDrawer");
-      const drawerBackdrop = document.getElementById("drawerBackdrop");
-      const orderSummaryPreview = document.getElementById("orderSummaryPreview");
-      const toastBox = document.getElementById("toastBox");
-
-      /* -----------------------------------------------------------------------
-         3. TOAST HELPER (Non-blocking feedback instead of alert)
-         ----------------------------------------------------------------------- */
-      let toastTimer = null;
-      function showToast(message) {
-        toastBox.textContent = message;
-        toastBox.classList.add("show");
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => {
-          toastBox.classList.remove("show");
-        }, 2800);
-      }
-
-      /* -----------------------------------------------------------------------
-         4. CLIPBOARD HELPER (Uses execCommand fallback for reliable copying)
-         ----------------------------------------------------------------------- */
-      function copyTextReliable(text, successMsg) {
-        try {
-          const tempArea = document.createElement("textarea");
-          tempArea.value = text;
-          tempArea.setAttribute("readonly", "");
-          tempArea.style.position = "fixed";
-          tempArea.style.left = "-9999px";
-          document.body.appendChild(tempArea);
-          tempArea.select();
-          const ok = document.execCommand("copy");
-          document.body.removeChild(tempArea);
-          if (ok) {
-            showToast(successMsg);
-          } else {
-            showToast("Unable to copy automatically. Please select and copy the text.");
-          }
-        } catch (err) {
-          showToast("Copy unavailable in this browser view.");
-        }
-      }
-
-      /* -----------------------------------------------------------------------
-         5. LIVE OPENING HOURS BADGE (Ghana Time / UTC+0: Mon–Sat 9:00–17:30)
-         ----------------------------------------------------------------------- */
-      function updateGhanaOpenStatus() {
-        const pill = document.getElementById("liveStatusPill");
-        const label = document.getElementById("liveStatusText");
-        if (!pill || !label) return;
-
-        // Ghana operates on GMT/UTC year-round
-        const now = new Date();
-        const utcDay = now.getUTCDay(); // 0 = Sunday, 1 = Monday ... 6 = Saturday
-        const utcMinutes = now.getUTCHours() * 60 + now.getUTCMinutes();
-
-        const openMinutes = 9 * 60;       // 9:00 AM (540)
-        const closeMinutes = 17 * 60 + 30; // 5:30 PM (1050)
-
-        const isOpenDay = utcDay >= 1 && utcDay <= 6;
-        const isOpenHour = utcMinutes >= openMinutes && utcMinutes < closeMinutes;
-
-        if (isOpenDay && isOpenHour) {
-          pill.classList.remove("is-closed");
-          pill.classList.add("is-open");
-          label.innerHTML = 'Open Now <span class="status-time-extra">&bull; Until 5:30 PM</span>';
-        } else {
-          pill.classList.remove("is-open");
-          pill.classList.add("is-closed");
-          if (utcDay === 0) {
-            label.innerHTML = 'Closed Today <span class="status-time-extra">&bull; Opens Mon 9:00 AM</span>';
-          } else if (utcMinutes < openMinutes) {
-            label.innerHTML = 'Closed <span class="status-time-extra">&bull; Opens 9:00 AM</span>';
-          } else if (utcDay === 6) {
-            label.innerHTML = 'Closed <span class="status-time-extra">&bull; Opens Mon 9:00 AM</span>';
-          } else {
-            label.innerHTML = 'Closed <span class="status-time-extra">&bull; Opens Tomorrow 9:00 AM</span>';
-          }
-        }
-      }
-
-      /* -----------------------------------------------------------------------
-         6. RENDER MENU CARDS
-         ----------------------------------------------------------------------- */
-      function renderMenu() {
-        const filtered = activeCategory === "all"
-          ? MENU_ITEMS
-          : MENU_ITEMS.filter((item) => item.category === activeCategory);
-
-        menuGrid.innerHTML = filtered.map((item) => {
-          const badgeClass = item.badgeType === "spicy"
-            ? "dish-tag spicy"
-            : item.badgeType === "refreshing"
-              ? "dish-tag refreshing"
-              : "dish-tag";
-
-          return `
-            <article class="dish-card">
-              <div>
-                <div class="dish-top">
-                  <div class="dish-icon-box" aria-hidden="true">${item.icon}</div>
-                  <span class="${badgeClass}">${item.badge}</span>
-                </div>
-                <h3 class="dish-title">${item.name}</h3>
-                <p class="dish-desc">${item.description}</p>
-              </div>
-              <div class="dish-footer">
-                <div class="dish-price">
-                  &#8373;${item.price.toFixed(2)}
-                  <small>Per serving</small>
-                </div>
-                <button type="button" class="add-tray-btn" data-add-id="${item.id}">
-                  <span>+ Add to Tray</span>
-                </button>
-              </div>
-            </article>
-          `;
-        }).join("");
-      }
-
-      /* -----------------------------------------------------------------------
-         7. ORDER TRAY MANAGEMENT
-         ----------------------------------------------------------------------- */
-      function addToTray(itemId) {
-        const currentQty = orderTray.get(itemId) || 0;
-        orderTray.set(itemId, currentQty + 1);
-        updateTrayUI();
-        const item = MENU_ITEMS.find((m) => m.id === itemId);
-        if (item) {
-          showToast(`Added "${item.name}" to your order tray`);
-        }
-      }
-
-      function changeQty(itemId, delta) {
-        const currentQty = orderTray.get(itemId) || 0;
-        const nextQty = currentQty + delta;
-        if (nextQty <= 0) {
-          orderTray.delete(itemId);
-        } else {
-          orderTray.set(itemId, nextQty);
-        }
-        updateTrayUI();
-      }
-
-      function buildOrderSummaryText() {
-        const mode = document.getElementById("orderMode").value;
-        const customerName = document.getElementById("trayCustomerName").value.trim() || "Guest";
-        let subtotal = 0;
-        const lines = [
-          "ENO MANSA RESTAURANT - ORDER ESTIMATE",
-          "Location: Osei Tutu I Ave, Kumasi",
-          `Customer: ${customerName} (${mode})`,
-          "----------------------------------------"
-        ];
-
-        orderTray.forEach((qty, id) => {
-          const item = MENU_ITEMS.find((m) => m.id === id);
-          if (item) {
-            const lineTotal = item.price * qty;
-            subtotal += lineTotal;
-            lines.push(`${qty}x ${item.name} - GHS ${lineTotal.toFixed(2)}`);
-          }
-        });
-
-        lines.push("----------------------------------------");
-        lines.push(`ESTIMATED TOTAL: GHS ${subtotal.toFixed(2)}`);
-        lines.push("Call to confirm: 053 907 2039");
-        return lines.join("\n");
-      }
-
-      function updateTrayUI() {
-        let totalCount = 0;
-        let subtotal = 0;
-        const rows = [];
-
-        orderTray.forEach((qty, id) => {
-          const item = MENU_ITEMS.find((m) => m.id === id);
-          if (!item) return;
-          totalCount += qty;
-          subtotal += item.price * qty;
-
-          rows.push(`
-            <div class="tray-item">
-              <div class="tray-item-info">
-                <h4>${item.name}</h4>
-                <span>&#8373;${item.price.toFixed(2)} each &bull; Line: &#8373;${(item.price * qty).toFixed(2)}</span>
-              </div>
-              <div class="qty-controls">
-                <button type="button" class="qty-btn" data-qty-id="${item.id}" data-delta="-1" aria-label="Decrease quantity">&minus;</button>
-                <strong style="min-width: 20px; text-align: center;">${qty}</strong>
-                <button type="button" class="qty-btn" data-qty-id="${item.id}" data-delta="1" aria-label="Increase quantity">+</button>
-              </div>
-            </div>
-          `);
-        });
-
-        trayCountBadge.textContent = String(totalCount);
-        traySubtotal.innerHTML = `&#8373;${subtotal.toFixed(2)}`;
-
-        if (rows.length === 0) {
-          trayBody.innerHTML = `
-            <div class="tray-empty">
-              <p style="font-weight: 700; color: var(--color-charcoal); margin-bottom: 0.4rem;">Your order tray is empty</p>
-              <p style="font-size: 0.9rem;">Select any Ghanaian dish from the menu to calculate your meal total before calling <strong>053 907 2039</strong>.</p>
-            </div>
-          `;
-          orderSummaryPreview.style.display = "none";
-        } else {
-          trayBody.innerHTML = rows.join("");
-          orderSummaryPreview.style.display = "block";
-          orderSummaryPreview.textContent = buildOrderSummaryText();
-        }
-      }
-
-      function openDrawer() {
-        orderDrawer.classList.add("open");
-        orderDrawer.setAttribute("aria-hidden", "false");
-        drawerBackdrop.classList.add("open");
-      }
-
-      function closeDrawer() {
-        orderDrawer.classList.remove("open");
-        orderDrawer.setAttribute("aria-hidden", "true");
-        drawerBackdrop.classList.remove("open");
-      }
-
-      /* -----------------------------------------------------------------------
-         8. EVENT LISTENERS
-         ----------------------------------------------------------------------- */
-      // Category filter buttons
-      filterBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          filterBtns.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          activeCategory = btn.getAttribute("data-category") || "all";
-          renderMenu();
-        });
+      entries.forEach(([id, qty]) => {
+        const item = menuItems.find(m => m.id === id);
+        const subtotal = item.price * qty;
+        totalCost += subtotal;
+        lines.push(`• ${qty}x ${item.name} — ₵${subtotal.toFixed(2)}`);
       });
 
-      // Add to tray delegation
-      menuGrid.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-add-id]");
-        if (btn) {
-          addToTray(btn.getAttribute("data-add-id"));
-        }
-      });
+      lines.push("");
+      lines.push(`*Estimated Total:* ₵${totalCost.toFixed(2)}`);
+      lines.push(`*Order Type:* ${customerDetails.type}`);
 
-      // Quantity +/- delegation inside drawer
-      trayBody.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-qty-id]");
-        if (btn) {
-          const id = btn.getAttribute("data-qty-id");
-          const delta = Number(btn.getAttribute("data-delta"));
-          changeQty(id, delta);
-        }
-      });
+      if (customerDetails.name.trim()) {
+        lines.push(`*Name:* ${customerDetails.name.trim()}`);
+      }
+      if (customerDetails.note.trim()) {
+        lines.push(`*Note:* ${customerDetails.note.trim()}`);
+      }
 
-      // Live update preview when order mode or name changes
-      document.getElementById("orderMode").addEventListener("change", updateTrayUI);
-      document.getElementById("trayCustomerName").addEventListener("input", updateTrayUI);
+      return lines.join("\n");
+    }
 
-      // Copy order text
-      document.getElementById("copyOrderBtn").addEventListener("click", () => {
-        if (orderTray.size === 0) {
-          showToast("Add at least one dish to your tray first.");
-          return;
-        }
-        copyTextReliable(buildOrderSummaryText(), "Order summary copied! Paste into WhatsApp or SMS.");
-      });
+    document.getElementById("sendWhatsappBtn").addEventListener("click", () => {
+      const message = buildOrderMessage();
+      if (!message) {
+        feedbackNote.textContent = "Please add at least one dish to your tray first.";
+        return;
+      }
 
-      // Copy restaurant address
-      document.getElementById("copyAddressBtn").addEventListener("click", () => {
-        copyTextReliable(
-          "Eno Mansa Restaurant, Osei Tutu I Ave, Kumasi, Ghana (Tel: 053 907 2039)",
-          "Address copied to clipboard!"
-        );
-      });
+      const whatsappURL = `https://wa.me/${RESTAURANT_WHATSAPP}?text=${encodeURIComponent(message)}`;
+      feedbackNote.textContent = "Opening WhatsApp with your order...";
+      window.open(whatsappURL, "_blank", "noopener");
+    });
 
-      // Drawer open/close
-      document.getElementById("openTrayBtn").addEventListener("click", openDrawer);
-      document.getElementById("closeTrayBtn").addEventListener("click", closeDrawer);
-      drawerBackdrop.addEventListener("click", closeDrawer);
+    document.getElementById("copyOrderBtn").addEventListener("click", async () => {
+      const message = buildOrderMessage();
+      if (!message) {
+        feedbackNote.textContent = "Add items to your tray before copying.";
+        return;
+      }
 
-      // Mobile navigation toggle
-      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-      const navLinks = document.getElementById("navLinks");
-      mobileMenuBtn.addEventListener("click", () => {
-        const isOpen = navLinks.classList.toggle("open");
-        mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
-      });
+      try {
+        await navigator.clipboard.writeText(message);
+        feedbackNote.textContent = "Order summary copied to clipboard!";
+      } catch (err) {
+        feedbackNote.textContent = "Could not auto-copy. Use 'Send Order via WhatsApp' above.";
+      }
+    });
 
-      navLinks.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navLinks.classList.remove("open");
-          mobileMenuBtn.setAttribute("aria-expanded", "false");
-        });
-      });
-
-      // Reservation / Pickup Inquiry Form
-      const inquiryForm = document.getElementById("inquiryForm");
-      const inquiryFeedback = document.getElementById("inquiryFeedback");
-      inquiryForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const name = document.getElementById("guestName").value.trim();
-        const phone = document.getElementById("guestPhone").value.trim();
-        const type = document.getElementById("inquiryType").value;
-        const time = document.getElementById("preferredTime").value;
-        const notes = document.getElementById("guestNotes").value.trim();
-
-        const summary = `Request Ready for ${name} (${phone}) — ${type} at ${time}${notes ? " | Notes: " + notes : ""}. Please call 053 907 2039 to confirm immediately.`;
-        inquiryFeedback.textContent = summary;
-        inquiryFeedback.style.display = "block";
-        showToast("Inquiry prepared! Tap 053 907 2039 to confirm by phone.");
-      });
-
-      /* -----------------------------------------------------------------------
-         9. INITIALIZE ON LOAD
-         ----------------------------------------------------------------------- */
-      document.getElementById("currentYear").textContent = String(new Date().getFullYear());
-      updateGhanaOpenStatus();
-      setInterval(updateGhanaOpenStatus, 60000);
+    filterBar.addEventListener("click", (e) => {
+      const btn = e.target.closest(".filter-btn");
+      if (!btn) return;
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentCategory = btn.dataset.category;
       renderMenu();
-      updateTrayUI();
-    })();
+    });
+
+    function openDrawer() {
+      feedbackNote.textContent = "";
+      orderDrawer.classList.add("open");
+      drawerBackdrop.classList.add("open");
+    }
+
+    function closeDrawer() {
+      orderDrawer.classList.remove("open");
+      drawerBackdrop.classList.remove("open");
+    }
+
+    document.getElementById("openTrayBtn").addEventListener("click", openDrawer);
+    document.getElementById("closeTrayBtn").addEventListener("click", closeDrawer);
+    drawerBackdrop.addEventListener("click", closeDrawer);
+
+    updateKumasiStatus();
+    renderMenu();
+    updateTrayUI();
   </script>
 </body>
 </html>
