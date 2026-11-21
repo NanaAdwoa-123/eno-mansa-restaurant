@@ -4,17 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eno Mansa Restaurant | Authentic Ghanaian Cuisine in Kumasi</title>
-  <meta name="description" content="Freshly prepared Ghanaian dishes on Osei Tutu I Ave, Kumasi. Open Monday to Saturday, 9:00 AM – 5:30 PM. Order online via WhatsApp or call 053 907 2039." />
+  <meta name="description" content="Eno Mansa Restaurant at Osei Tutu I Ave, Kumasi, Ghana. Freshly prepared Ghanaian classics, soups, grilled specials, and drinks. Open Mon–Sat, 9:00 AM – 5:30 PM. Order via WhatsApp or call 053 907 2039." />
   <style>
     :root {
       --bg-cream: #fbf7f0;
       --bg-card: #ffffff;
       --bg-warm: #f3eadc;
       --forest: #1b4332;
-      --forest-dark: #122e22;
+      --forest-dark: #10291e;
       --terracotta: #b84a27;
       --terracotta-dark: #94391c;
       --amber: #d9822b;
+      --amber-soft: #ffd89b;
       --whatsapp: #25d366;
       --whatsapp-dark: #1da851;
       --text-main: #22201d;
@@ -39,6 +40,7 @@
       background-color: var(--bg-cream);
       color: var(--text-main);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
@@ -51,7 +53,21 @@
       max-width: 100%;
     }
 
-    /* Top Status Bar */
+    /* Kente-inspired top accent bar */
+    .kente-bar {
+      height: 6px;
+      width: 100%;
+      background: repeating-linear-gradient(
+        90deg,
+        #d9822b 0 22px,
+        #b84a27 22px 44px,
+        #1b4332 44px 66px,
+        #10291e 66px 78px,
+        #ffd89b 78px 90px
+      );
+    }
+
+    /* Live Ghana (GMT) Status Bar */
     .status-bar {
       background-color: var(--forest-dark);
       color: #f6f1e7;
@@ -86,7 +102,7 @@
       background-color: #f87171;
     }
 
-    /* Navigation */
+    /* Sticky Header & Custom Logo */
     header {
       position: sticky;
       top: 0;
@@ -97,9 +113,9 @@
     }
 
     .nav-wrap {
-      max-width: 1140px;
+      max-width: 1160px;
       margin: 0 auto;
-      padding: 0.9rem 1.25rem;
+      padding: 0.75rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -109,20 +125,14 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.7rem;
+      gap: 0.75rem;
     }
 
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--terracotta), var(--amber));
-      color: #fff;
-      font-weight: 800;
-      font-size: 1.15rem;
-      display: grid;
-      place-items: center;
-      letter-spacing: 0.5px;
+    .brand-logo-svg {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 3px 8px rgba(27, 67, 50, 0.16));
     }
 
     .brand-text h1 {
@@ -134,6 +144,7 @@
     .brand-text span {
       font-size: 0.78rem;
       color: var(--text-muted);
+      font-weight: 500;
     }
 
     .nav-links {
@@ -178,12 +189,17 @@
       border-radius: 999px;
     }
 
-    /* Hero with Slideshow Background */
+    /* =========================================================================
+       FULL-SCREEN HERO WITH CROSS-FADING BACKGROUND SLIDESHOW
+       ========================================================================= */
     .hero {
       position: relative;
-      overflow: hidden;
+      min-height: 560px;
       color: #fff;
-      padding: 4.8rem 1.25rem 5.4rem;
+      padding: 4.5rem 1.25rem 5rem;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
       background-color: var(--forest-dark);
     }
 
@@ -197,12 +213,11 @@
     .hero-slide {
       position: absolute;
       inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      background-size: cover;
+      background-position: center;
       opacity: 0;
-      transform: scale(1.03);
-      transition: opacity 1.1s ease-in-out, transform 6s ease-out;
+      transform: scale(1.04);
+      transition: opacity 1.1s ease, transform 6.5s ease;
     }
 
     .hero-slide.active {
@@ -216,9 +231,9 @@
       z-index: 1;
       background: linear-gradient(
         115deg,
-        rgba(14, 36, 27, 0.92) 0%,
-        rgba(27, 67, 50, 0.84) 55%,
-        rgba(140, 56, 29, 0.82) 100%
+        rgba(12, 31, 23, 0.91) 0%,
+        rgba(27, 67, 50, 0.80) 55%,
+        rgba(148, 57, 28, 0.72) 100%
       );
       pointer-events: none;
     }
@@ -226,10 +241,11 @@
     .hero-inner {
       position: relative;
       z-index: 2;
-      max-width: 1140px;
+      max-width: 1160px;
+      width: 100%;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.2fr 0.95fr;
+      grid-template-columns: 1.22fr 0.92fr;
       gap: 2.2rem;
       align-items: center;
     }
@@ -238,22 +254,24 @@
       display: inline-block;
       background: rgba(255, 255, 255, 0.15);
       border: 1px solid rgba(255, 255, 255, 0.28);
-      padding: 0.32rem 0.88rem;
+      padding: 0.32rem 0.9rem;
       border-radius: 999px;
       font-size: 0.82rem;
       font-weight: 600;
       margin-bottom: 1rem;
       letter-spacing: 0.4px;
+      color: var(--amber-soft);
     }
 
     .hero h2 {
-      font-size: clamp(2rem, 4vw, 3.05rem);
-      line-height: 1.15;
+      font-size: clamp(2rem, 4.1vw, 3.1rem);
+      line-height: 1.14;
       margin-bottom: 1rem;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.28);
     }
 
     .hero p {
-      color: #f3ede2;
+      color: #f4eee3;
       font-size: 1.05rem;
       max-width: 58ch;
       margin-bottom: 1.75rem;
@@ -263,38 +281,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.9rem;
-    }
-
-    .slideshow-controls {
-      margin-top: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      font-size: 0.84rem;
-      color: #f3ede2;
-    }
-
-    .slide-dots {
-      display: inline-flex;
-      gap: 0.45rem;
-    }
-
-    .slide-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      background: transparent;
-      cursor: pointer;
-      padding: 0;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .slide-dot.active {
-      background: var(--amber);
-      border-color: var(--amber);
-      transform: scale(1.2);
     }
 
     .btn {
@@ -327,43 +313,48 @@
     .btn-secondary {
       background-color: rgba(255, 255, 255, 0.16);
       color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.36);
     }
 
     .btn-secondary:hover {
       background-color: rgba(255, 255, 255, 0.25);
     }
 
+    /* Hero Emblem & Info Card */
     .hero-card {
-      background: rgba(16, 34, 25, 0.82);
+      background: rgba(15, 33, 25, 0.82);
       border: 1px solid rgba(255, 255, 255, 0.22);
       border-radius: var(--radius);
-      overflow: hidden;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+      padding: 1.55rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.3);
     }
 
-    .hero-card-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    .hero-emblem-row {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
     }
 
-    .hero-card-body {
-      padding: 1.4rem 1.55rem;
+    .hero-emblem-row h3 {
+      font-size: 1.15rem;
+      color: var(--amber-soft);
+      line-height: 1.2;
     }
 
-    .hero-card h3 {
-      font-size: 1.12rem;
-      margin-bottom: 0.85rem;
-      color: #ffd89b;
+    .hero-emblem-row p {
+      font-size: 0.84rem;
+      color: #dcd5c8;
+      margin-bottom: 0;
     }
 
     .info-list {
       list-style: none;
       display: grid;
-      gap: 0.75rem;
+      gap: 0.72rem;
       font-size: 0.94rem;
     }
 
@@ -371,13 +362,84 @@
       display: flex;
       justify-content: space-between;
       gap: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-      padding-bottom: 0.58rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+      padding-bottom: 0.55rem;
     }
 
     .info-list li:last-child {
       border-bottom: none;
       padding-bottom: 0;
+    }
+
+    /* Slideshow Controls Bar inside Hero */
+    .slideshow-controls {
+      position: relative;
+      z-index: 2;
+      max-width: 1160px;
+      width: 100%;
+      margin: 2rem auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: rgba(12, 27, 20, 0.68);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .slide-caption {
+      font-size: 0.84rem;
+      color: #f4eee3;
+      padding-left: 0.35rem;
+    }
+
+    .slide-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .slide-ctrl-btn {
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      padding: 0.25rem 0.65rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .slide-ctrl-btn:hover {
+      background: var(--amber);
+      color: #1b1815;
+      border-color: var(--amber);
+    }
+
+    .slide-dots {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      margin: 0 0.2rem;
+    }
+
+    .slide-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.38);
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .slide-dot.active {
+      background: var(--amber);
+      transform: scale(1.25);
     }
 
     /* Sections */
@@ -386,7 +448,7 @@
     }
 
     .container {
-      max-width: 1140px;
+      max-width: 1160px;
       margin: 0 auto;
     }
 
@@ -442,10 +504,10 @@
       border-color: var(--forest);
     }
 
-    /* Menu Grid with Dish Photos */
+    /* Menu Grid */
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
       gap: 1.45rem;
     }
 
@@ -496,7 +558,6 @@
       background: rgba(27, 67, 50, 0.9);
       padding: 0.25rem 0.65rem;
       border-radius: 999px;
-      backdrop-filter: blur(4px);
     }
 
     .dish-body {
@@ -552,18 +613,17 @@
       border-color: var(--terracotta);
     }
 
-    /* Full-Width Atmospheric Banner with Real Restaurant Photography */
+    /* Ambiance / Why Dine With Us Banner */
     .ambiance-banner {
-      position: relative;
       background:
-        linear-gradient(90deg, rgba(18, 46, 34, 0.93) 0%, rgba(18, 46, 34, 0.8) 58%, rgba(184, 74, 39, 0.84) 100%),
-        url("https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat;
+        linear-gradient(95deg, rgba(16, 41, 30, 0.93) 0%, rgba(27, 67, 50, 0.82) 58%, rgba(184, 74, 39, 0.82) 100%),
+        url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
       color: #fff;
       padding: 4.2rem 1.25rem;
     }
 
     .ambiance-inner {
-      max-width: 1140px;
+      max-width: 1160px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -597,7 +657,7 @@
     }
 
     .highlight-box h3 {
-      color: #ffd89b;
+      color: var(--amber-soft);
       font-size: 1.04rem;
       margin-bottom: 0.3rem;
     }
@@ -608,7 +668,7 @@
       margin-bottom: 0;
     }
 
-    /* Photo Gallery Section */
+    /* Gallery Section */
     .gallery-section {
       background: var(--bg-warm);
       border-top: 1px solid var(--border);
@@ -649,7 +709,7 @@
       position: absolute;
       inset: auto 0 0 0;
       padding: 1.5rem 1rem 0.85rem;
-      background: linear-gradient(to top, rgba(18, 30, 24, 0.88), transparent);
+      background: linear-gradient(to top, rgba(16, 28, 22, 0.88), transparent);
       color: #fff;
       font-weight: 600;
       font-size: 0.9rem;
@@ -886,21 +946,42 @@
       font-weight: 600;
     }
 
+    /* Footer */
     footer {
       background:
-        linear-gradient(rgba(18, 46, 34, 0.94), rgba(18, 46, 34, 0.96)),
-        url("https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1400") center/cover no-repeat;
+        linear-gradient(rgba(16, 41, 30, 0.94), rgba(16, 41, 30, 0.97)),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
       color: #e3dcd0;
-      text-align: center;
-      padding: 2.5rem 1.25rem;
+      padding: 2.6rem 1.25rem 2rem;
       font-size: 0.92rem;
     }
 
-    @media (max-width: 860px) {
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .footer-brand-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
       .hero-inner,
       .ambiance-inner,
       .location-grid {
         grid-template-columns: 1fr;
+      }
+
+      .hero {
+        flex-direction: column;
+        padding-top: 3.2rem;
       }
 
       .gallery-grid {
@@ -916,7 +997,7 @@
       }
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 540px) {
       .gallery-grid {
         grid-template-columns: 1fr;
       }
@@ -924,26 +1005,54 @@
       .gallery-item.wide {
         grid-column: span 1;
       }
+
+      .slideshow-controls {
+        border-radius: 14px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Live Ghana Time Status Bar -->
+  <!-- Kente Top Accent -->
+  <div class="kente-bar" aria-hidden="true"></div>
+
+  <!-- Live Ghana (GMT) Status Bar -->
   <div class="status-bar">
     <span class="live-badge">
       <span class="dot" id="statusDot"></span>
       <span id="statusText">Checking Kumasi hours...</span>
     </span>
     <span>Osei Tutu I Ave, Kumasi</span>
-    <span><a href="tel:+233539072039">Call: 053 907 2039</a></span>
+    <span><a href="tel:+233539072039">Call / WhatsApp: 053 907 2039</a></span>
   </div>
+
+  <!-- Reusable Custom SVG Restaurant Logo Definition -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="enoMansaLogoMark">
+        <circle cx="32" cy="32" r="30" fill="#1b4332" stroke="#d9822b" stroke-width="2.5" />
+        <circle cx="32" cy="32" r="25.5" fill="none" stroke="#ffd89b" stroke-width="1" stroke-dasharray="3 2.5" />
+        <!-- Steam wisps -->
+        <path d="M23 18c0-2.8 2.4-3.8 2.4-6.6" fill="none" stroke="#ffd89b" stroke-width="2" stroke-linecap="round" />
+        <path d="M32 16.5c0-3 2.4-4 2.4-7" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+        <path d="M41 18c0-2.8 2.4-3.8 2.4-6.6" fill="none" stroke="#ffd89b" stroke-width="2" stroke-linecap="round" />
+        <!-- Steaming pot / calabash bowl -->
+        <path d="M16 29h32c0 10.2-6.8 17.5-16 17.5S16 39.2 16 29Z" fill="#b84a27" stroke="#ffd89b" stroke-width="1.6" />
+        <path d="M13 29h38" stroke="#ffd89b" stroke-width="2.2" stroke-linecap="round" />
+        <!-- Emblem text arc / label -->
+        <text x="32" y="55" text-anchor="middle" fill="#ffd89b" font-size="6.8" font-weight="800" letter-spacing="1.1">ENO MANSA</text>
+      </g>
+    </defs>
+  </svg>
 
   <!-- Navigation -->
   <header>
     <div class="nav-wrap">
-      <a href="#" class="brand">
-        <div class="brand-mark">EM</div>
+      <a href="#" class="brand" aria-label="Eno Mansa Restaurant Home">
+        <svg class="brand-logo-svg" viewBox="0 0 64 64" role="img" aria-label="Eno Mansa Restaurant Logo">
+          <use href="#enoMansaLogoMark"></use>
+        </svg>
         <div class="brand-text">
           <h1>Eno Mansa Restaurant</h1>
           <span>Osei Tutu I Ave • Kumasi</span>
@@ -963,86 +1072,90 @@
     </div>
   </header>
 
-  <!-- Hero Section with Slideshow Background -->
-  <section class="hero">
-    <div class="hero-slideshow" id="heroSlideshow" aria-hidden="true">
-      <img
+  <!-- Hero Section with Cross-Fading Background Slideshow -->
+  <section class="hero" id="heroSection" aria-label="Featured Restaurant Slideshow">
+    <div class="hero-slideshow" id="heroSlideshow">
+      <div
         class="hero-slide active"
-        src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        alt=""
-        onerror="this.style.display='none'"
-      />
-      <img
+        data-caption="Slide 1 of 4: Freshly prepared traditional Ghanaian meals & soups in Kumasi"
+        style="background-image: url('https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=1600&q=80');"
+      ></div>
+      <div
         class="hero-slide"
-        src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        alt=""
-        onerror="this.style.display='none'"
-      />
-      <img
+        data-caption="Slide 2 of 4: Warm restaurant dining & welcoming daytime service on Osei Tutu I Ave"
+        style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80');"
+      ></div>
+      <div
         class="hero-slide"
-        src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        alt=""
-        onerror="this.style.display='none'"
-      />
-      <img
+        data-caption="Slide 3 of 4: Savory grilled meats, spiced plates & fresh kitchen ingredients"
+        style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1600&q=80');"
+      ></div>
+      <div
         class="hero-slide"
-        src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        alt=""
-        onerror="this.style.display='none'"
-      />
+        data-caption="Slide 4 of 4: Hearty rice dishes & comforting bowls served hot daily"
+        style="background-image: url('https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=1600&q=80');"
+      ></div>
     </div>
-    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-scrim"></div>
 
-    <div class="hero-inner">
-      <div>
-        <span class="hero-tag">Authentic Ghanaian Daytime Dining</span>
-        <h2>Hearty Homemade Ghanaian Meals in the Heart of Kumasi</h2>
-        <p>
-          Visit Eno Mansa Restaurant along Osei Tutu I Avenue for freshly pounded fufu, smoky jollof, banku with grilled tilapia, and rich traditional soups served hot every Monday through Saturday.
-        </p>
-        <div class="hero-actions">
-          <a href="#menu" class="btn btn-primary">Explore Today's Menu</a>
-          <a href="tel:+233539072039" class="btn btn-secondary">Call 053 907 2039</a>
+    <div style="width: 100%; position: relative; z-index: 2;">
+      <div class="hero-inner">
+        <div>
+          <span class="hero-tag">Authentic Ghanaian Daytime Dining • Kumasi</span>
+          <h2>Hearty Homemade Ghanaian Meals on Osei Tutu I Avenue</h2>
+          <p>
+            Welcome to Eno Mansa Restaurant in Kumasi. Enjoy freshly prepared fufu, banku with grilled tilapia, smoky jollof, rich soups, and chilled local drinks served Monday through Saturday.
+          </p>
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-primary">Explore Today's Menu</a>
+            <a href="tel:+233539072039" class="btn btn-secondary">Call 053 907 2039</a>
+          </div>
         </div>
 
-        <div class="slideshow-controls">
-          <span id="slideCaption">Scene: Warm Restaurant Dining Tables</span>
-          <div class="slide-dots" id="slideDots" role="tablist" aria-label="Background Slideshow">
-            <button class="slide-dot active" type="button" data-slide="0" aria-label="Slide 1"></button>
-            <button class="slide-dot" type="button" data-slide="1" aria-label="Slide 2"></button>
-            <button class="slide-dot" type="button" data-slide="2" aria-label="Slide 3"></button>
-            <button class="slide-dot" type="button" data-slide="3" aria-label="Slide 4"></button>
+        <div class="hero-card">
+          <div class="hero-emblem-row">
+            <svg width="56" height="56" viewBox="0 0 64 64" role="img" aria-label="Eno Mansa Emblem">
+              <use href="#enoMansaLogoMark"></use>
+            </svg>
+            <div>
+              <h3>Eno Mansa Kitchen</h3>
+              <p>Osei Tutu I Ave, Kumasi, Ghana</p>
+            </div>
           </div>
+          <ul class="info-list">
+            <li><span>Mon – Sat Hours</span><strong>9:00 AM – 5:30 PM</strong></li>
+            <li><span>Sunday</span><strong>Closed</strong></li>
+            <li><span>Phone / WhatsApp</span><strong>053 907 2039</strong></li>
+            <li><span>Ordering</span><strong>Order Tray + WhatsApp</strong></li>
+          </ul>
         </div>
       </div>
 
-      <div class="hero-card">
-        <img
-          class="hero-card-img"
-          src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1000"
-          alt="Freshly plated meals served at Eno Mansa Restaurant"
-          onerror="handleImgFallback(this, 'Eno Mansa Kitchen')"
-        />
-        <div class="hero-card-body">
-          <h3>Quick Visit & Order Info</h3>
-          <ul class="info-list">
-            <li><span>Address</span><strong>Osei Tutu I Ave, Kumasi</strong></li>
-            <li><span>Mon – Sat</span><strong>9:00 AM – 5:30 PM</strong></li>
-            <li><span>Sunday</span><strong>Closed</strong></li>
-            <li><span>Phone / WhatsApp</span><strong>053 907 2039</strong></li>
-          </ul>
+      <!-- Slideshow Navigation & Indicators -->
+      <div class="slideshow-controls">
+        <span class="slide-caption" id="slideCaption">Slide 1 of 4: Freshly prepared traditional Ghanaian meals & soups in Kumasi</span>
+        <div class="slide-buttons">
+          <button type="button" class="slide-ctrl-btn" id="prevSlideBtn" aria-label="Previous slide">&lsaquo; Prev</button>
+          <div class="slide-dots" id="slideDots" aria-label="Choose slide">
+            <button type="button" class="slide-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+            <button type="button" class="slide-dot" data-slide="1" aria-label="Go to slide 2"></button>
+            <button type="button" class="slide-dot" data-slide="2" aria-label="Go to slide 3"></button>
+            <button type="button" class="slide-dot" data-slide="3" aria-label="Go to slide 4"></button>
+          </div>
+          <button type="button" class="slide-ctrl-btn" id="nextSlideBtn" aria-label="Next slide">Next &rsaquo;</button>
+          <button type="button" class="slide-ctrl-btn" id="toggleSlideBtn" aria-label="Pause or play slideshow">Pause</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Menu Section with Real Food Pictures -->
+  <!-- Interactive Menu Section -->
   <section id="menu">
     <div class="container">
       <div class="section-head">
         <span>Fresh Daily Kitchen</span>
         <h2>Our Signature Menu</h2>
-        <p>Select your favorite dishes to build an order tray, then send your order straight to our WhatsApp line in one tap.</p>
+        <p>Filter by category, add dishes to your Order Tray, and send your order directly via WhatsApp to 053 907 2039.</p>
       </div>
 
       <div class="filter-bar" id="filterBar">
@@ -1056,97 +1169,103 @@
     </div>
   </section>
 
-  <!-- Full-Bleed Background Image Highlights Section -->
+  <!-- Ambiance / Why Dine With Us Section -->
   <section class="ambiance-banner" id="why-us">
     <div class="ambiance-inner">
       <div>
         <span class="hero-tag">Why Dine With Us</span>
         <h2>Prepared Fresh Every Morning in Central Kumasi</h2>
         <p>
-          Conveniently located along Osei Tutu I Avenue for quick office lunch breaks, takeaway packs, and warm sit-down meals cooked with authentic Ashanti spices.
+          Conveniently situated along Osei Tutu I Avenue for quick afternoon lunch breaks, neat takeaway packs, and sit-down meals crafted with authentic Ghanaian flavors.
         </p>
-        <a href="#menu" class="btn btn-primary">Order Pickup Now</a>
+        <a href="#menu" class="btn btn-primary">Browse Dishes</a>
       </div>
 
       <div class="highlights-grid">
         <div class="highlight-box">
-          <h3>Authentic Ashanti Recipes</h3>
-          <p>Slow-simmered light soup, palm nut soup, and groundnut soup seasoned with traditional spices and fresh local ingredients.</p>
+          <h3>Authentic Ghanaian Recipes</h3>
+          <p>Hearty soups, stews, grilled proteins, and rice dishes cooked fresh for daytime service.</p>
         </div>
         <div class="highlight-box">
-          <h3>Central Kumasi Access</h3>
-          <p>Easy to reach on Osei Tutu I Avenue for workers, shoppers, and visitors looking for a satisfying daytime meal.</p>
+          <h3>Central Kumasi Location</h3>
+          <p>Easy to reach on Osei Tutu I Ave whether you are dining in or picking up on the go.</p>
         </div>
         <div class="highlight-box">
-          <h3>Fast WhatsApp Pre-Orders</h3>
-          <p>Build your meal tray online and send your order directly to 053 907 2039 so your food is ready when you arrive.</p>
+          <h3>Instant WhatsApp Ordering</h3>
+          <p>Select dishes in your Order Tray and send a clean itemized message straight to 053 907 2039.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Kitchen & Dining Gallery -->
+  <!-- Real-Life Food & Restaurant Gallery -->
   <section class="gallery-section" id="gallery">
     <div class="container">
       <div class="section-head">
-        <span>From Our Kitchen</span>
-        <h2>Fresh Flavors & Warm Hospitality</h2>
-        <p>A glimpse of the hearty meals, grilled specials, and refreshing drinks served Monday through Saturday.</p>
+        <span>Kitchen & Dining Moments</span>
+        <h2>Inside Eno Mansa Restaurant</h2>
+        <p>Real-life culinary inspiration showcasing hearty plates, grilled favorites, refreshing drinks, and dining warmth.</p>
       </div>
 
       <div class="gallery-grid">
         <div class="gallery-item wide">
           <img
-            src="https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            alt="Rich savory soup served hot in the restaurant"
+            src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=1000&q=80"
+            alt="Traditional Ghanaian meal and rich stew bowl"
+            loading="lazy"
             onerror="handleImgFallback(this, 'Traditional Soups & Staples')"
           />
-          <div class="gallery-caption">Traditional Soups & Freshly Pounded Staples</div>
+          <div class="gallery-caption">Traditional Soups & Hearty Staples</div>
         </div>
 
         <div class="gallery-item">
           <img
-            src="https://images.pexels.com/photos/3296279/pexels-photo-3296279.jpeg?auto=compress&cs=tinysrgb&w=900"
-            alt="Seasoned grilled fish platter"
-            onerror="handleImgFallback(this, 'Charcoal-Grilled Tilapia')"
+            src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=80"
+            alt="Grilled fish dish with herbs and spices"
+            loading="lazy"
+            onerror="handleImgFallback(this, 'Grilled Tilapia Special')"
           />
-          <div class="gallery-caption">Charcoal-Grilled Tilapia</div>
+          <div class="gallery-caption">Grilled Fish Specials</div>
         </div>
 
         <div class="gallery-item">
           <img
-            src="https://images.pexels.com/photos/7625056/pexels-photo-7625056.jpeg?auto=compress&cs=tinysrgb&w=900"
-            alt="Spiced rice dish with roasted chicken"
-            onerror="handleImgFallback(this, 'Smoky Jollof & Chicken')"
+            src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=800&q=80"
+            alt="Spiced rice dish served with chicken"
+            loading="lazy"
+            onerror="handleImgFallback(this, 'Jollof & Rice Dishes')"
           />
-          <div class="gallery-caption">Smoky Jollof & Grilled Chicken</div>
+          <div class="gallery-caption">Spiced Rice & Chicken</div>
         </div>
 
         <div class="gallery-item">
           <img
-            src="https://images.pexels.com/photos/1292294/pexels-photo-1292294.jpeg?auto=compress&cs=tinysrgb&w=900"
-            alt="Chilled berry and hibiscus drink in glasses"
+            src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80"
+            alt="Chilled berry and hibiscus refreshment drink"
+            loading="lazy"
             onerror="handleImgFallback(this, 'Chilled Spiced Sobolo')"
           />
-          <div class="gallery-caption">Chilled Spiced Sobolo</div>
+          <div class="gallery-caption">Chilled Local Refreshments</div>
         </div>
 
         <div class="gallery-item">
           <img
-            src="https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=900"
-            alt="Fresh fruit and side accompaniments"
-            onerror="handleImgFallback(this, 'Fresh Sides & Accompaniments')"
+            src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80"
+            alt="Golden fried sides and lunch plate"
+            loading="lazy"
+            onerror="handleImgFallback(this, 'Golden Fried Sides')"
           />
-          <div class="gallery-caption">Fresh Sides & Accompaniments</div>
+          <div class="gallery-caption">Golden Fried Sides</div>
         </div>
 
         <div class="gallery-item wide">
           <img
-            src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            alt="Restaurant dining tables set for daytime guests"
-            onerror="handleImgFallback(this, 'Dine-In & Takeaway Service')"
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80"
+            alt="Restaurant dining tables and warm lighting"
+            loading="lazy"
+            onerror="handleImgFallback(this, 'Kumasi Dining Room')"
           />
-          <div class="gallery-caption">Welcoming Daytime Dine-In & Takeaway on Osei Tutu I Ave</div>
+          <div class="gallery-caption">Dine-In & Takeaway on Osei Tutu I Ave</div>
         </div>
       </div>
     </div>
@@ -1158,7 +1277,7 @@
       <div class="section-head">
         <span>Find Us</span>
         <h2>Location & Opening Hours</h2>
-        <p>Stop by for dine-in or takeaway during our daytime service hours.</p>
+        <p>Visit us along Osei Tutu I Avenue in Kumasi Monday through Saturday.</p>
       </div>
 
       <div class="location-grid">
@@ -1195,9 +1314,20 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p><strong>Eno Mansa Restaurant</strong> • Osei Tutu I Ave, Kumasi • Tel: 053 907 2039</p>
-    <p style="font-size: 0.82rem; margin-top: 0.35rem; opacity: 0.85;">Open Monday – Saturday, 9:00 AM – 5:30 PM</p>
+    <div class="footer-inner">
+      <div class="footer-brand-row">
+        <svg width="52" height="52" viewBox="0 0 64 64" role="img" aria-label="Eno Mansa Restaurant Footer Logo">
+          <use href="#enoMansaLogoMark"></use>
+        </svg>
+        <div>
+          <strong style="color: #fff; font-size: 1.05rem;">Eno Mansa Restaurant</strong>
+          <p style="font-size: 0.86rem; opacity: 0.88;">Osei Tutu I Ave, Kumasi • Tel: 053 907 2039</p>
+        </div>
+      </div>
+      <p style="font-size: 0.85rem; opacity: 0.85;">Open Monday – Saturday, 9:00 AM – 5:30 PM • Closed Sundays</p>
+    </div>
   </footer>
 
   <!-- Slide-out Order Tray -->
@@ -1228,14 +1358,7 @@
   <script>
     const RESTAURANT_WHATSAPP = "233539072039";
 
-    const slideCaptions = [
-      "Scene: Warm Restaurant Dining Tables",
-      "Scene: Freshly Prepared Plates from the Kitchen",
-      "Scene: Savory Stews & Home-Style Cooking",
-      "Scene: Hearty Lunch Platters Ready to Serve"
-    ];
-
-    // Built-in SVG fallback generator so images never break offline
+    // Fallback SVG if any image fails to load
     function makeFallbackSVG(label) {
       const safeLabel = String(label || "Eno Mansa Restaurant").replace(/[<>&'"]/g, "");
       const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
@@ -1246,10 +1369,10 @@
           </linearGradient>
         </defs>
         <rect width="800" height="500" fill="url(#g)"/>
-        <circle cx="400" cy="215" r="54" fill="rgba(255,255,255,0.14)"/>
-        <text x="400" y="224" text-anchor="middle" fill="#ffd89b" font-family="sans-serif" font-size="28" font-weight="bold">EM</text>
-        <text x="400" y="315" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="24" font-weight="bold">${safeLabel}</text>
-        <text x="400" y="350" text-anchor="middle" fill="#f3ede2" font-family="sans-serif" font-size="16">Eno Mansa Restaurant • Kumasi</text>
+        <circle cx="400" cy="210" r="52" fill="rgba(255,255,255,0.15)"/>
+        <text x="400" y="220" text-anchor="middle" fill="#ffd89b" font-family="sans-serif" font-size="26" font-weight="bold">EM</text>
+        <text x="400" y="310" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="24" font-weight="bold">${safeLabel}</text>
+        <text x="400" y="346" text-anchor="middle" fill="#f3ede2" font-family="sans-serif" font-size="16">Eno Mansa Restaurant • Osei Tutu I Ave, Kumasi</text>
       </svg>`;
       return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
     }
@@ -1259,6 +1382,75 @@
       imgEl.src = makeFallbackSVG(label);
     }
 
+    // Hero Background Slideshow Logic
+    const slides = Array.from(document.querySelectorAll(".hero-slide"));
+    const slideDots = Array.from(document.querySelectorAll(".slide-dot"));
+    const slideCaption = document.getElementById("slideCaption");
+    const prevSlideBtn = document.getElementById("prevSlideBtn");
+    const nextSlideBtn = document.getElementById("nextSlideBtn");
+    const toggleSlideBtn = document.getElementById("toggleSlideBtn");
+
+    let currentSlide = 0;
+    let isSlideshowPlaying = true;
+    let slideTimer = null;
+
+    function showSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === currentSlide);
+      });
+      slideDots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentSlide);
+      });
+      if (slideCaption && slides[currentSlide]) {
+        slideCaption.textContent = slides[currentSlide].dataset.caption || "";
+      }
+    }
+
+    function startSlideshow() {
+      stopSlideshow();
+      slideTimer = setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 5000);
+    }
+
+    function stopSlideshow() {
+      if (slideTimer) {
+        clearInterval(slideTimer);
+        slideTimer = null;
+      }
+    }
+
+    prevSlideBtn.addEventListener("click", () => {
+      showSlide(currentSlide - 1);
+      if (isSlideshowPlaying) startSlideshow();
+    });
+
+    nextSlideBtn.addEventListener("click", () => {
+      showSlide(currentSlide + 1);
+      if (isSlideshowPlaying) startSlideshow();
+    });
+
+    slideDots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const idx = Number(dot.dataset.slide);
+        showSlide(idx);
+        if (isSlideshowPlaying) startSlideshow();
+      });
+    });
+
+    toggleSlideBtn.addEventListener("click", () => {
+      isSlideshowPlaying = !isSlideshowPlaying;
+      if (isSlideshowPlaying) {
+        toggleSlideBtn.textContent = "Pause";
+        startSlideshow();
+      } else {
+        toggleSlideBtn.textContent = "Play";
+        stopSlideshow();
+      }
+    });
+
+    // Menu Data
     const menuItems = [
       {
         id: "fufu-goat",
@@ -1266,7 +1458,7 @@
         category: "local",
         categoryLabel: "Local Staples & Soups",
         price: 55,
-        image: "https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=900",
+        image: "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=800&q=80",
         desc: "Freshly pounded fufu served with spicy, aromatic goat meat light soup."
       },
       {
@@ -1275,7 +1467,7 @@
         category: "local",
         categoryLabel: "Local Staples & Soups",
         price: 50,
-        image: "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=900",
+        image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80",
         desc: "Creamy roasted peanut soup simmered with tender chicken and soft fufu."
       },
       {
@@ -1284,7 +1476,7 @@
         category: "local",
         categoryLabel: "Local Staples & Soups",
         price: 65,
-        image: "https://images.pexels.com/photos/3296279/pexels-photo-3296279.jpeg?auto=compress&cs=tinysrgb&w=900",
+        image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=80",
         desc: "Charcoal-grilled whole tilapia served with hot banku, fresh pepper sauce, and shito."
       },
       {
@@ -1293,7 +1485,7 @@
         category: "local",
         categoryLabel: "Local Staples & Soups",
         price: 42,
-        image: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=900",
+        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
         desc: "Soft white yam paired with rich cocoyam leaf stew, boiled egg, and avocado."
       },
       {
@@ -1302,7 +1494,7 @@
         category: "rice",
         categoryLabel: "Rice Specialties",
         price: 48,
-        image: "https://images.pexels.com/photos/7625056/pexels-photo-7625056.jpeg?auto=compress&cs=tinysrgb&w=900",
+        image: "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=800&q=80",
         desc: "Flavorful Ghanaian jollof served with spiced grilled chicken, coleslaw, and shito."
       },
       {
@@ -1311,7 +1503,7 @@
         category: "rice",
         categoryLabel: "Rice Specialties",
         price: 45,
-        image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=900",
+        image: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80",
         desc: "Traditional rice and beans with gari, spaghetti, fried plantain, egg, and stew."
       },
       {
@@ -1320,7 +1512,7 @@
         category: "local",
         categoryLabel: "Local Staples & Soups",
         price: 38,
-        image: "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=900",
+        image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80",
         desc: "Slow-cooked black-eyed bean stew in red palm oil with sweet golden plantains."
       },
       {
@@ -1329,7 +1521,7 @@
         category: "drinks",
         categoryLabel: "Traditional Drinks",
         price: 12,
-        image: "https://images.pexels.com/photos/1292294/pexels-photo-1292294.jpeg?auto=compress&cs=tinysrgb&w=900",
+        image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
         desc: "Refreshing hibiscus flower drink infused with ginger, cloves, and pineapple."
       },
       {
@@ -1338,14 +1530,13 @@
         category: "drinks",
         categoryLabel: "Traditional Drinks",
         price: 12,
-        image: "https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=900",
+        image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80",
         desc: "Classic caramelized roasted-corn refreshment served ice cold."
       }
     ];
 
     let tray = {};
     let currentCategory = "all";
-    let currentSlide = 0;
     let customerDetails = {
       name: "",
       type: "Takeaway / Pickup",
@@ -1360,26 +1551,6 @@
     const orderDrawer = document.getElementById("orderDrawer");
     const drawerBackdrop = document.getElementById("drawerBackdrop");
     const feedbackNote = document.getElementById("feedbackNote");
-    const slides = Array.from(document.querySelectorAll(".hero-slide"));
-    const slideDots = Array.from(document.querySelectorAll(".slide-dot"));
-    const slideCaption = document.getElementById("slideCaption");
-
-    function goToSlide(index) {
-      currentSlide = (index + slides.length) % slides.length;
-      slides.forEach((img, i) => img.classList.toggle("active", i === currentSlide));
-      slideDots.forEach((dot, i) => dot.classList.toggle("active", i === currentSlide));
-      if (slideCaption) {
-        slideCaption.textContent = slideCaptions[currentSlide] || "";
-      }
-    }
-
-    slideDots.forEach((dot, i) => {
-      dot.addEventListener("click", () => goToSlide(i));
-    });
-
-    setInterval(() => {
-      goToSlide(currentSlide + 1);
-    }, 5000);
 
     function updateKumasiStatus() {
       const now = new Date();
@@ -1610,6 +1781,7 @@
     updateKumasiStatus();
     renderMenu();
     updateTrayUI();
+    startSlideshow();
   </script>
 </body>
 </html>
